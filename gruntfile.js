@@ -33,5 +33,5 @@ module.exports = function (grunt) {
     init();
 
     grunt.registerTask('default', ['clean', 'copy', 'less', 'connect']);
-    // grunt.registerTask('publish', ['copy:dist', 'gh-pages']);
+    grunt.registerTask('publish', ['clean', 'copy', 'less', 'gh-pages']);
 };
