@@ -26,7 +26,7 @@
     </aside>
     <section class="col-md-8">
         <div ng-click="copyColor(color.hex)" class="col-md-4 color-chip" ng-repeat="color in mock" ng-style="{'background-color': color.hex}">
-          <p ng-bind="color.name" ng-class="{ 'text-inv': colorText(color.name, color.hex)}"></p>
+          <p ng-bind="color.name | uppercase" ng-class="{ 'text-inv': colorText(color.name, color.hex)}"></p>
         </div>
     </section>
   </body>
