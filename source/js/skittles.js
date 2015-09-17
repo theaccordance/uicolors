@@ -1,6 +1,6 @@
 var app = angular.module('skittles', ['angular-clipboard']);
 
-app.controller('paletteCtrl', ['$scope', function ($scope) {
+app.controller('paletteCtrl', ['$scope', '$document', function ($scope, $document) {
 
   var colorOutput = {};
 
@@ -28,6 +28,36 @@ app.controller('paletteCtrl', ['$scope', function ($scope) {
     return ['rgba(',r, ',', g, ',', b,', 1.0)'].join('');
   }
 
+  function createNode(text) {
+      var node = $document[0].createElement('textarea');
+      node.style.position = 'absolute';
+      node.style.left = '-10000px';
+      node.textContent = text;
+      return node;
+  }
+
+  function copyNode(node) {
+      // Set inline style to override css styles
+      $document[0].body.style.webkitUserSelect = 'initial';
+
+      var selection = $document[0].getSelection();
+      selection.removeAllRanges();
+      node.select();
+
+      $document[0].execCommand('copy');
+      selection.removeAllRanges();
+
+      // Reset inline style
+      $document[0].body.style.webkitUserSelect = '';
+  }
+
+  function copyText(text) {
+      var node = createNode(text);
+      $document[0].body.appendChild(node);
+      copyNode(node);
+      $document[0].body.removeChild(node);
+  }
+
   colorOutput = {
     toHexHash: toHexHash,
     toHexNoHash: toHexNoHash,
@@ -51,7 +81,8 @@ app.controller('paletteCtrl', ['$scope', function ($scope) {
 
   $scope.copyColor = function (color) {
     var colorValue = colorOutput[$scope.outputFormat](color);
-    console.log(colorValue);
+    copyText(colorValue);
+    console.log('color copied:', colorValue);
   };
 
   $scope.success = function (color) {

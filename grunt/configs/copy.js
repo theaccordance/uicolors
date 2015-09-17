@@ -5,8 +5,7 @@ module.exports = function (grunt) {
                 {
                     expand: true,
                     src: [
-                        'node_modules/angular/angular.js',
-                        'node_modules/angular-clipboard/angular-clipboard.js'
+                        'node_modules/angular/angular.js'
                     ],
                     dest: 'preview/js/',
                     filter: 'isFile',
