@@ -1,2 +1,4 @@
 node_modules/
 preview/
+.grunt/
+.DS_Store
