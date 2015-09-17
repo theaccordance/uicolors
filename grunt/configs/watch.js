@@ -8,7 +8,7 @@ module.exports = function (grunt) {
         },
         project: {
             files: ['source/**/*'],
-            tasks: ['build']
+            tasks: ['clean', 'copy', 'less']
         }
     };
 };

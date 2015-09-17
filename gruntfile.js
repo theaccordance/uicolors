@@ -32,6 +32,6 @@ module.exports = function (grunt) {
     }
     init();
 
-    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('default', ['clean', 'copy', 'less', 'connect']);
     // grunt.registerTask('publish', ['copy:dist', 'gh-pages']);
 };
