@@ -13,7 +13,6 @@ module.exports = function (grunt) {
                     flatten: true
                 },
                 {expand: true, cwd: 'node_modules/bootstrap/fonts/', src: ['*'], dest: 'preview/fonts', filter: 'isFile'},
-                {expand: true, cwd: 'source/js', src: ['*'], dest: 'preview/js', filter: 'isFile'},
                 {expand: true, cwd: 'source/', src: ['index.html'], dest: 'preview/', filter: 'isFile'},
                 {expand: true, cwd: 'node_modules/ng-notifications-bar/dist/', src: ['ngNotificationsBar.min.css'], dest: 'preview/css/', filter: 'isFile'}
             ]

@@ -1,5 +1,3 @@
-var app = angular.module('skittles', ['ngNotificationsBar']);
-
 app.controller('paletteCtrl', ['$scope', '$document', 'notifications', function ($scope, $document, notifications) {
 
   var colorOutput = {};
