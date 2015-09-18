@@ -14,7 +14,7 @@
   </head>
   <body ng-controller="paletteCtrl" ng-init="init()">
     <notifications-bar class="notifications"></notifications-bar>
-    <section class="row">
+    <section>
         <div ng-click="copyColor(color.hex)" class="col-md-2 color-chip" ng-repeat="color in mock" ng-style="{'background-color': color.hex}">
           <p ng-bind="color.name | uppercase" ng-class="{ 'text-inv': colorText(color.name, color.hex)}"></p>
         </div>

@@ -95,6 +95,10 @@ app.controller('paletteCtrl', ['$scope', '$document', 'notifications', function 
     {name: 'asbestos', hex: '#7f8c8d'}
   ];
 
+  $scope.showValue = function (color) {
+    return colorOutput[$scope.outputFormat](color);
+  };
+
   $scope.copyColor = function (color) {
     var colorValue = colorOutput[$scope.outputFormat](color);
     copyText(colorValue);
