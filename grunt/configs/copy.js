@@ -13,8 +13,7 @@ module.exports = function (grunt) {
                 },
                 {expand: true, cwd: 'node_modules/bootstrap/fonts/', src: ['*'], dest: 'preview/fonts', filter: 'isFile'},
                 {expand: true, cwd: 'source/templates/', src: ['*'], dest: 'preview/templates', filter: 'isFile'},
-                {expand: true, cwd: 'source/', src: ['index.html'], dest: 'preview/', filter: 'isFile'},
-                {expand: true, cwd: 'node_modules/ng-notifications-bar/dist/', src: ['ngNotificationsBar.min.css'], dest: 'preview/css/', filter: 'isFile'}
+                {expand: true, cwd: 'source/', src: ['index.html'], dest: 'preview/', filter: 'isFile'}
             ]
         }
     };
