@@ -1,4 +1,4 @@
-app.controller('paletteCtrl', ['$scope', '$document', 'notifications', function ($scope, $document, notifications) {
+app.controller('paletteCtrl', ['$scope', function ($scope) {
 
   var colorOutput = {};
 
@@ -24,36 +24,6 @@ app.controller('paletteCtrl', ['$scope', '$document', 'notifications', function 
         g = parseInt(result[2], 16),
         b = parseInt(result[3], 16);
     return ['rgba(',r, ',', g, ',', b,', 1.0)'].join('');
-  }
-
-  function createNode(text) {
-      var node = $document[0].createElement('textarea');
-      node.style.position = 'absolute';
-      node.style.left = '-10000px';
-      node.textContent = text;
-      return node;
-  }
-
-  function copyNode(node) {
-      // Set inline style to override css styles
-      $document[0].body.style.webkitUserSelect = 'initial';
-
-      var selection = $document[0].getSelection();
-      selection.removeAllRanges();
-      node.select();
-
-      $document[0].execCommand('copy');
-      selection.removeAllRanges();
-
-      // Reset inline style
-      $document[0].body.style.webkitUserSelect = '';
-  }
-
-  function copyText(text) {
-      var node = createNode(text);
-      $document[0].body.appendChild(node);
-      copyNode(node);
-      $document[0].body.removeChild(node);
   }
 
   colorOutput = {
@@ -93,31 +63,7 @@ app.controller('paletteCtrl', ['$scope', '$document', 'notifications', function 
     {name: 'asbestos', hex: '#7f8c8d'}
   ];
 
-  $scope.showValue = function (color) {
-    return colorOutput[$scope.outputFormat](color);
-  };
-
-  $scope.copyColor = function (color) {
-    var colorValue = colorOutput[$scope.outputFormat](color);
-    copyText(colorValue);
-    notifications.showSuccess({message: 'Color copied to clipboard!'});
-  };
-
-  $scope.success = function (color) {
-    console.log('Color', color, 'copied.');
-  };
-
   $scope.init = function () {
     $scope.outputFormat = $scope.formats[0].value;
   };
-
-  $scope.colorText = function (name, hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex),
-        r = parseInt(result[1], 16),
-        g = parseInt(result[2], 16),
-        b = parseInt(result[3], 16),
-        luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-    console.log(name, luma);
-    return (luma < 75);
-  }
 }]);

@@ -1,1 +1,1 @@
-var app = angular.module('skittles', ['ngNotificationsBar']);
+var app = angular.module('skittles', []);
