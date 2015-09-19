@@ -1,3 +1,8 @@
 # Skittles
 
-Taste the rainbow
+Skittles is an HTMl5-based color picker.
+![Screenshot](http://joemainwaring.com/skittles/img/screenshot.png)
+
+## Palettes
+- FlatUI
+- More Coming Soon!
