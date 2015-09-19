@@ -5,14 +5,33 @@
     <title>Skittles</title>
 
     <script src="js/angular.js"></script>
+    <script src="js/snap.svg.js"></script>
     <script src="js/skittles.js"></script>
 
     <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAABFANUArEv+AFAA3QBSAN0A7t3+AFoA5QBbAOUAmy7+AJwx/gD8+/wAiRH+AHEA9QCeNP4A7Nr/AMFr/wBGANYAxZD6AO7d/wBnAO4AuF3+AI8d/gB6BfgA/fv9AMBs/QDm0/sAkSD+AP7+/QB9AP4ApkP+AOjW+wBIANcASQDXAHER8ABTAN8AqEb+AJUm/gBdAOcAlib+AGcA7wC4Xf8AcgD3AIQJ/gCLFf0A+PP8AHQA9wCtTP4A/v7+ALRY/QCZLP4AdgD3AK5P/gBJANgASgDYAEsA2ACwUv4AiRL+AGEA6ADr2P8AwGn/AGoA8ABrAPAAdQD4AMJs/wCiOP4A797/AKE7/gCOG/4AVQDhAPHh/wBWAOEAkB7+AGAA6QClQf4AfgH+AEIA0gC+Z/4Aggf+AOrZ/gBOANoAVgDiAKtK/gBYAOIAmSr+AGIA6gD59/wAbADyAG0A8gDGqPUAr1D+AJww/gBCANMAVAHgAIMI/ABDANMARADTAIQL/ACyVv4AUADbALNW/gBYAOMAWQDjAGQA6wD///8AZQDrAH8F/QCGDf8Aojn+AG4A8wB4APsAt1z+APz6/QCCCP0AuV/+AP39/QBFANQAwWv9AEYA1ABQANwAu2L+AKhF/gCcYfIAkB38AHgA/ABxAPQAeQD8AHoA/AB7APwAlyj+AIMI/gCKFP0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZmZmZmZmZmZmZmZmZmZmZmZmZmZmeAYhTjNUZmZmZmZmZmYdPGdHUQM1D15xZmZmZmYQPQs8Z0djAjQAXRpmZmYuSX5sKFYSU1F1H3JaZmZmeTeAG3wsICA4T2EfSglmZgcjRiopOTk5TUdFTh50Zi5IQQxSFF8bek0SJENOM2YaWC13P38EDQ05VWUFIU5mZidtYFBqQApcFQsmU2RbZmZLS3YvAUQEEWgxVmdHV2Zmbg46dmIiCBlMfHs7Z2ZmZmYXPksnMkElaX0saytmZmZmZnNLcDZIMIEbbBhmZmZmZmZmFhM2HFlCby5mZmZmZmZmZmZmZi4uZmZmZmZmZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body ng-controller="paletteCtrl" ng-init="init()">
+    <flash-toaster></flash-toaster>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Skittles</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+              <div class="form-group">
+                  <label for="valueFormat">Format</label>
+                  <select class="form-control" ng-model="outputFormat">
+                      <option ng-repeat="format in formats" ng-bind="format.label" value="{{format.value}}"></option>
+                  </select>
+              </div>
+          </form>
+        </div>
+      </div>
+    </nav>
     <section>
-        <color-chip ng-repeat="color in mock" color="color"></color-chip>
+        <color-chip ng-repeat="color in mock" color="color" output="$parent.outputFormat"></color-chip>
     </section>
   </body>
 </html>

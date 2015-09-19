@@ -5,7 +5,8 @@ module.exports = function (grunt) {
                 {
                     expand: true,
                     src: [
-                        'node_modules/angular/angular.js'
+                        'node_modules/angular/angular.js',
+                        'bower_components/snap.svg/dist/snap.svg.js'
                     ],
                     dest: 'preview/js/',
                     filter: 'isFile',

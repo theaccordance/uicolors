@@ -1,0 +1,19 @@
+{
+  "name": "skittles",
+  "version": "0.1.0",
+  "homepage": "https://github.com/theaccordance/skittles",
+  "authors": [
+    "Joe Mainwaring <joe@highground.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "snap.svg": "~0.4.1"
+  }
+}

@@ -1,4 +1,5 @@
 node_modules/
 preview/
+bower_components/
 .grunt/
 .DS_Store

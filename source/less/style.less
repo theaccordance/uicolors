@@ -14,7 +14,6 @@ section {
 .color-chip {
   height: 25%;
   padding: 12px;
-  z-index: 50;
 }
 
 .color-chip > div {
@@ -24,8 +23,21 @@ section {
   position: absolute;
 }
 
-#notify {
-  height: 60px;
-  width: 100%;
-  z-index: 100;
+#toaster {
+    height: 100%;
+	position: fixed;
+	left: 0;
+    top: 0;
+	visibility: hidden;
+    width: 100%;
+    z-index: 100;
+}
+
+#toaster.show {
+    visibility: visible;
+}
+
+#toast text {
+    font-size: 8px;
+    text-anchor: middle;
 }

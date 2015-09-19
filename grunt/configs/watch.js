@@ -4,7 +4,8 @@ module.exports = function (grunt) {
             files: ['gruntfile.js', 'grunt/configs/*.js', 'grunt/tasks/*.js'],
             options: {
                 reload: true
-            }
+            },
+            tasks: ['build']
         },
         project: {
             files: ['source/**/*'],
