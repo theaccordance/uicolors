@@ -6770,29 +6770,33 @@ body {
   margin: 0;
   width: 100%;
 }
-aside {
-  background-color: #d9534f;
-  height: 100%;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 33.33%;
-}
 section {
   height: 100%;
-  left: 33.33%;
   margin: 0;
 }
 .color-chip {
   height: 25%;
   padding: 12px;
 }
-.color-chip > p {
+.color-chip > div {
   bottom: 0;
   left: 0;
   margin-left: 10px;
   position: absolute;
 }
-.text-inv {
-  color: #FFF;
+#toaster {
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 100;
+}
+#toaster.show {
+  visibility: visible;
+}
+#toast text {
+  font-size: 8px;
+  text-anchor: middle;
 }

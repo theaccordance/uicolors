@@ -1,8 +1,115 @@
-var app = angular.module('skittles', ['ngNotificationsBar']);
+var app = angular.module('skittles', []);
 
-app.controller('paletteCtrl', ['$scope', '$document', 'notifications', function ($scope, $document, notifications) {
+app.directive('colorChip', ['$document', '$rootScope', 'colorUtil', function ($document, $rootScope, colorUtil) {
+    return {
+        restrict: 'E',
+        replace: true,
+        templateUrl: 'templates/color-chip.html',
+        scope: {
+          color: '=color',
+          outputFormat: '=output'
+        },
+        link: function (scope, element) {
+            function createNode(text) {
+                var node = $document[0].createElement('textarea');
+                node.style.position = 'absolute';
+                node.style.left = '-10000px';
+                node.textContent = text;
+                return node;
+            }
 
-  var colorOutput = {};
+            function copyNode(node) {
+                // Set inline style to override css styles
+                $document[0].body.style.webkitUserSelect = 'initial';
+
+                var selection = $document[0].getSelection();
+                selection.removeAllRanges();
+                node.select();
+
+                $document[0].execCommand('copy');
+                selection.removeAllRanges();
+
+                // Reset inline style
+                $document[0].body.style.webkitUserSelect = '';
+            }
+
+            function copyText(text) {
+                var node = createNode(text);
+                $document[0].body.appendChild(node);
+                copyNode(node);
+                $document[0].body.removeChild(node);
+            }
+
+            function getLuma(hex) {
+                var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex),
+                    r = parseInt(result[1], 16),
+                    g = parseInt(result[2], 16),
+                    b = parseInt(result[3], 16);
+                return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+            }
+
+            element.css({
+                backgroundColor: scope.color.hex,
+                color: (getLuma(scope.color.hex) < 75) ? '#FFF' : '#000'
+            });
+
+            element.on('click', function (event) {
+                var color = colorUtil[scope.outputFormat](scope.color.hex);
+                copyText(color);
+                $rootScope.$broadcast('notify:show', {hex: scope.color.hex});
+            });
+    }
+  }
+}]);
+
+app.directive('flashToaster', ['$timeout', function ($timeout) {
+    return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'templates/notify.html',
+    scope: {},
+    link: function (scope, element) {
+        var boxHeight = 160,
+        height = (boxHeight * 60) / window.innerHeight,
+        yCenter = (60 / 2) - (height / 2),
+        rectStartPos = {
+            y: yCenter * 0.75,
+            height: height,
+            opacity: 0
+        };
+
+        scope.viewBox = '0 0 80 60';
+
+        scope.rect = rectStartPos;
+
+        scope.$on('notify:show', function (event, data) {
+          var toPath = 'M 40 -21.875 C 11.356078 -21.875 -11.875 1.3560784 -11.875 30 C -11.875 58.643922 11.356078 81.875 40 81.875 C 68.643922 81.875 91.875 58.643922 91.875 30 C 91.875 1.3560784 68.643922 -21.875 40 -21.875 Z',
+              fromPath = 'M40,30 c 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 Z',
+              toaster = Snap('#toaster > path');
+              toaster.attr({fill: data.hex});
+          element.addClass('show');
+
+          toaster.animate({d: toPath}, 250, mina.elastic(), function () {
+              var toast = Snap('#toast');
+              toast.animate({
+                  y: yCenter,
+                  opacity: 1
+              }, 250);
+              $timeout(function () {
+                  toast.animate(rectStartPos, 100, mina.backout(), function () {
+                      toaster.animate({opacity: 0}, 250, mina.backout(), function () {
+                          element.removeClass('show');
+                          toaster.attr({d: fromPath, opacity: 1});
+                      });
+                  });
+              }, 2000);
+          });
+        });
+    }
+    };
+}]);
+
+app.service('colorUtil', [function () {
 
   function toHexHash (hex) {
     return hex;
@@ -28,42 +135,17 @@ app.controller('paletteCtrl', ['$scope', '$document', 'notifications', function 
     return ['rgba(',r, ',', g, ',', b,', 1.0)'].join('');
   }
 
-  function createNode(text) {
-      var node = $document[0].createElement('textarea');
-      node.style.position = 'absolute';
-      node.style.left = '-10000px';
-      node.textContent = text;
-      return node;
-  }
-
-  function copyNode(node) {
-      // Set inline style to override css styles
-      $document[0].body.style.webkitUserSelect = 'initial';
-
-      var selection = $document[0].getSelection();
-      selection.removeAllRanges();
-      node.select();
-
-      $document[0].execCommand('copy');
-      selection.removeAllRanges();
-
-      // Reset inline style
-      $document[0].body.style.webkitUserSelect = '';
-  }
-
-  function copyText(text) {
-      var node = createNode(text);
-      $document[0].body.appendChild(node);
-      copyNode(node);
-      $document[0].body.removeChild(node);
-  }
-
-  colorOutput = {
+  return {
     toHexHash: toHexHash,
     toHexNoHash: toHexNoHash,
     toRGB: toRGB,
     toRGBA: toRGBA
   };
+}]);
+
+app.controller('paletteCtrl', ['$scope', function ($scope) {
+
+  var colorOutput = {};
 
   $scope.formats = [
     {'label': 'HEX - #1234EF', value: 'toHexHash'},
@@ -95,27 +177,7 @@ app.controller('paletteCtrl', ['$scope', '$document', 'notifications', function 
     {name: 'asbestos', hex: '#7f8c8d'}
   ];
 
-  $scope.copyColor = function (color) {
-    var colorValue = colorOutput[$scope.outputFormat](color);
-    copyText(colorValue);
-    notifications.showSuccess({message: 'Color copied to clipboard!'});
-  };
-
-  $scope.success = function (color) {
-    console.log('Color', color, 'copied.');
-  };
-
   $scope.init = function () {
     $scope.outputFormat = $scope.formats[0].value;
   };
-
-  $scope.colorText = function (name, hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex),
-        r = parseInt(result[1], 16),
-        g = parseInt(result[2], 16),
-        b = parseInt(result[3], 16),
-        luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-    console.log(name, luma);
-    return (luma < 75);
-  }
 }]);
