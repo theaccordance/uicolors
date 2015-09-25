@@ -103,6 +103,7 @@ app.directive('skHeader', ['$document', '$rootScope', 'colorProcessor', function
             scope.loadPalette = function (palette) {
                 $rootScope.$broadcast('palette:load', palette);
                 scope.showOptions = !scope.showOptions;
+                scope.isLarge = true;
             };
         }
     };
