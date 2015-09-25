@@ -1,38 +1,35 @@
-app.controller('paletteCtrl', ['$scope', function ($scope) {
+app.controller('paletteCtrl', ['$scope', 'colorProcessor', function ($scope, colorProcessor) {
 
-  var colorOutput = {};
+    $scope.formats = colorProcessor.getFormats();
 
-  $scope.formats = [
-    {'label': 'HEX - #1234EF', value: 'toHexHash'},
-    {'label': 'HEX - 1234EF', value: 'toHexNoHash'},
-    {'label': 'RGB - rgb(255, 255, 255)', value: 'toRGB'},
-    {'label': 'RGBA - rgba(255, 255, 255, 1.0)', value: 'toRGBA'}
-  ];
+    $scope.mock = [
+        {name: 'turquoise', hex: '#1abc9c'},
+        {name: 'green sea', hex: '#16a085'},
+        {name: 'emerald', hex: '#2ecc71'},
+        {name: 'nephritis', hex: '#27ae60'},
+        {name: 'peter river', hex: '#3498db'},
+        {name: 'belize hole', hex: '#2980b9'},
+        {name: 'amethyst', hex: '#9b59b6'},
+        {name: 'wisteria', hex: '#8e44ad'},
+        {name: 'wet asphalt', hex: '#34495e'},
+        {name: 'midnight blue', hex: '#2c3e50'},
+        {name: 'sunflower', hex: '#f1c40f'},
+        {name: 'orange', hex: '#f39c12'},
+        {name: 'carrot', hex: '#e67e22'},
+        {name: 'pumpkin', hex: '#d35400'},
+        {name: 'alizarin', hex: '#e74c3c'},
+        {name: 'pomegranate', hex: '#c0392b'},
+        {name: 'clouds', hex: '#ecf0f1'},
+        {name: 'silver', hex: '#bdc3c7'},
+        {name: 'concrete', hex: '#95a5a6'},
+        {name: 'asbestos', hex: '#7f8c8d'}
+    ];
 
-  $scope.mock = [
-    {name: 'turquoise', hex: '#1abc9c'},
-    {name: 'green sea', hex: '#16a085'},
-    {name: 'emerald', hex: '#2ecc71'},
-    {name: 'nephritis', hex: '#27ae60'},
-    {name: 'peter river', hex: '#3498db'},
-    {name: 'belize hole', hex: '#2980b9'},
-    {name: 'amethyst', hex: '#9b59b6'},
-    {name: 'wisteria', hex: '#8e44ad'},
-    {name: 'wet asphalt', hex: '#34495e'},
-    {name: 'midnight blue', hex: '#2c3e50'},
-    {name: 'sunflower', hex: '#f1c40f'},
-    {name: 'orange', hex: '#f39c12'},
-    {name: 'carrot', hex: '#e67e22'},
-    {name: 'pumpkin', hex: '#d35400'},
-    {name: 'alizarin', hex: '#e74c3c'},
-    {name: 'pomegranate', hex: '#c0392b'},
-    {name: 'clouds', hex: '#ecf0f1'},
-    {name: 'silver', hex: '#bdc3c7'},
-    {name: 'concrete', hex: '#95a5a6'},
-    {name: 'asbestos', hex: '#7f8c8d'}
-  ];
+    $scope.init = function () {
+        $scope.outputFormat = colorProcessor.getFormat();
+    };
 
-  $scope.init = function () {
-    $scope.outputFormat = $scope.formats[0].value;
-  };
+    $scope.setFormat = function () {
+        colorProcessor.setFormat($scope.outputFormat);
+    };
 }]);

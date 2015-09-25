@@ -1,11 +1,10 @@
-app.directive('colorChip', ['$document', '$rootScope', 'colorUtil', 'ngNotify', function ($document, $rootScope, colorUtil, ngNotify) {
+app.directive('colorChip', ['$document', '$rootScope', 'colorProcessor', 'ngNotify', function ($document, $rootScope, colorProcessor, ngNotify) {
     return {
         restrict: 'E',
         replace: true,
         templateUrl: 'templates/color-chip.html',
         scope: {
-          color: '=color',
-          outputFormat: '=output'
+          color: '=color'
         },
         link: function (scope, element) {
             function createNode(text) {
@@ -52,7 +51,7 @@ app.directive('colorChip', ['$document', '$rootScope', 'colorUtil', 'ngNotify', 
             });
 
             element.on('click', function (event) {
-                var color = colorUtil[scope.outputFormat](scope.color.hex);
+                var color = colorProcessor.getColor(scope.color.hex);
                 copyText(color);
                 // $rootScope.$broadcast('notify:show', {hex: scope.color.hex});
                 ngNotify.set('Color Copied!');
