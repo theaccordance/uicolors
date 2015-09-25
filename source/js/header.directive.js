@@ -5,6 +5,7 @@ app.directive('skHeader', ['$document', '$rootScope', 'colorProcessor', function
         templateUrl: 'templates/header.html',
         link: function (scope) {
             scope.isRowIcon = true;
+            scope.showOptions = false;
             scope.outputFormat = colorProcessor.getFormat();
 
             scope.formats = colorProcessor.getFormats();
@@ -17,6 +18,10 @@ app.directive('skHeader', ['$document', '$rootScope', 'colorProcessor', function
             scope.setFormat = function () {
                 colorProcessor.setFormat(scope.outputFormat);
             };
+
+            scope.toggleOptions = function () {
+                scope.showOptions = !scope.showOptions;
+            }
         }
     };
 }]);
