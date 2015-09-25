@@ -32,7 +32,7 @@ module.exports = function (grunt) {
     }
     init();
 
-    grunt.registerTask('build', ['clean', 'copy', 'concat', 'less'])
+    grunt.registerTask('build', ['clean', 'copy', 'concat', 'less']);
     grunt.registerTask('default', ['build', 'connect']);
     grunt.registerTask('publish', ['build', 'gh-pages']);
 };
