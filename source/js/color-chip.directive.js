@@ -45,16 +45,22 @@ app.directive('colorChip', ['$document', '$rootScope', 'colorProcessor', 'ngNoti
                 return 0.2126 * r + 0.7152 * g + 0.0722 * b;
             }
 
+            scope.isRow = true;
+
             element.css({
                 backgroundColor: scope.color.hex,
                 color: (getLuma(scope.color.hex) < 75) ? '#FFF' : '#000'
             });
 
-            element.on('click', function (event) {
+            element.on('click', function () {
                 var color = colorProcessor.getColor(scope.color.hex);
                 copyText(color);
                 // $rootScope.$broadcast('notify:show', {hex: scope.color.hex});
                 ngNotify.set('Color Copied!');
+            });
+
+            scope.$on('layout:toggle', function (event, data) {
+                scope.isRow = !scope.isRow;
             });
     }
   }

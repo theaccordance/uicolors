@@ -14,10 +14,17 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Skittles</a>
+                    <a class="navbar-brand" href="#">
+                        <img alt="Brand" width="32" height="32" src="img/favicon.png" />
+                    </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a ng-click="toggleLayout()">
+                                <span class="glyphicon" ng-class="{'glyphicon-list': isRowIcon, 'glyphicon-th-large': !isRowIcon}"></span>
+                            </a>
+                        </li>
                         <li>
                             <a href="https://github.com/theaccordance/skittles/blob/develop/readme.md">
                                 <span class="glyphicon glyphicon-info-sign"></span>

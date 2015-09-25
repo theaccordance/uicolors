@@ -1,4 +1,4 @@
-app.controller('paletteCtrl', ['$scope', 'colorProcessor', function ($scope, colorProcessor) {
+app.controller('paletteCtrl', ['$scope', '$rootScope', 'colorProcessor', function ($scope, $rootScope, colorProcessor) {
 
     $scope.formats = colorProcessor.getFormats();
 
@@ -25,6 +25,8 @@ app.controller('paletteCtrl', ['$scope', 'colorProcessor', function ($scope, col
         {name: 'asbestos', hex: '#7f8c8d'}
     ];
 
+    $scope.isRowIcon = true;
+
     $scope.init = function () {
         $scope.outputFormat = colorProcessor.getFormat();
     };
@@ -32,4 +34,9 @@ app.controller('paletteCtrl', ['$scope', 'colorProcessor', function ($scope, col
     $scope.setFormat = function () {
         colorProcessor.setFormat($scope.outputFormat);
     };
+
+    $scope.toggleLayout = function () {
+        $rootScope.$broadcast('layout:toggle');
+        $scope.isRowIcon = !$scope.isRowIcon;
+    }
 }]);
