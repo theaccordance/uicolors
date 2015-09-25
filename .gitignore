@@ -3,3 +3,4 @@ preview/
 bower_components/
 .grunt/
 .DS_Store
+.idea/
