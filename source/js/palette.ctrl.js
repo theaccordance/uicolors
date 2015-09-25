@@ -1,7 +1,5 @@
 app.controller('paletteCtrl', ['$scope', '$rootScope', 'colorProcessor', function ($scope, $rootScope, colorProcessor) {
 
-    $scope.formats = colorProcessor.getFormats();
-
     $scope.mock = [
         {name: 'turquoise', hex: '#1abc9c'},
         {name: 'green sea', hex: '#16a085'},
@@ -25,18 +23,5 @@ app.controller('paletteCtrl', ['$scope', '$rootScope', 'colorProcessor', functio
         {name: 'asbestos', hex: '#7f8c8d'}
     ];
 
-    $scope.isRowIcon = true;
 
-    $scope.init = function () {
-        $scope.outputFormat = colorProcessor.getFormat();
-    };
-
-    $scope.setFormat = function () {
-        colorProcessor.setFormat($scope.outputFormat);
-    };
-
-    $scope.toggleLayout = function () {
-        $rootScope.$broadcast('layout:toggle');
-        $scope.isRowIcon = !$scope.isRowIcon;
-    }
 }]);
