@@ -1,13 +1,12 @@
 var app = angular.module('skittles', ['ngNotify']);
 
-app.directive('colorChip', ['$document', '$rootScope', 'colorUtil', 'ngNotify', function ($document, $rootScope, colorUtil, ngNotify) {
+app.directive('colorChip', ['$document', '$rootScope', 'colorProcessor', 'ngNotify', function ($document, $rootScope, colorProcessor, ngNotify) {
     return {
         restrict: 'E',
         replace: true,
         templateUrl: 'templates/color-chip.html',
         scope: {
-          color: '=color',
-          outputFormat: '=output'
+          color: '=color'
         },
         link: function (scope, element) {
             function createNode(text) {
@@ -54,7 +53,7 @@ app.directive('colorChip', ['$document', '$rootScope', 'colorUtil', 'ngNotify', 
             });
 
             element.on('click', function (event) {
-                var color = colorUtil[scope.outputFormat](scope.color.hex);
+                var color = colorProcessor.getColor(scope.color.hex);
                 copyText(color);
                 // $rootScope.$broadcast('notify:show', {hex: scope.color.hex});
                 ngNotify.set('Color Copied!');
@@ -110,75 +109,105 @@ app.directive('flashToaster', ['$timeout', function ($timeout) {
     };
 }]);
 
-app.service('colorUtil', [function () {
+app.service('colorProcessor', ['ngNotify', function (ngNotify) {
 
-  function toHexHash (hex) {
-    return hex;
-  }
+    var processHex = {},
+        formats = [
+            {'name': 'Hexadecimal w/ Hashtag' , 'label': 'HEX - #1234EF', value: 'toHexHash'},
+            {'name': 'Hexadecimal' , 'label': 'HEX - 1234EF', value: 'toHexNoHash'},
+            {'name': 'RGB' , 'label': 'RGB - rgb(255, 255, 255)', value: 'toRGB'},
+            {'name': 'RGBA' , 'label': 'RGBA - rgba(255, 255, 255, 1.0)', value: 'toRGBA'}
+        ],
+        format = formats[0];
 
-  function toHexNoHash (hex) {
-    return hex.slice(1);
-  }
+    function toHexHash (hex) {
+        return hex;
+    }
 
-  function toRGB (hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex),
+    function toHexNoHash (hex) {
+        return hex.slice(1);
+    }
+
+    function toRGB (hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex),
         r = parseInt(result[1], 16),
         g = parseInt(result[2], 16),
         b = parseInt(result[3], 16);
-    return ['rgb(',r, ',', g, ',', b,')'].join('');
-  }
+        return ['rgb(',r, ',', g, ',', b,')'].join('');
+    }
 
-  function toRGBA (hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex),
+    function toRGBA (hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex),
         r = parseInt(result[1], 16),
         g = parseInt(result[2], 16),
         b = parseInt(result[3], 16);
-    return ['rgba(',r, ',', g, ',', b,', 1.0)'].join('');
-  }
+        return ['rgba(',r, ',', g, ',', b,', 1.0)'].join('');
+    }
 
-  return {
-    toHexHash: toHexHash,
-    toHexNoHash: toHexNoHash,
-    toRGB: toRGB,
-    toRGBA: toRGBA
-  };
+    processHex = {
+        toHexHash: toHexHash,
+        toHexNoHash: toHexNoHash,
+        toRGB: toRGB,
+        toRGBA: toRGBA
+    };
+
+    function getColor (hex) {
+        return processHex[format.value](hex);
+    }
+
+    function getFormats() {
+        return formats;
+    }
+
+    function getFormat() {
+        return format;
+    }
+
+    function setFormat(data) {
+        format = data;
+        ngNotify.set('Color Values set to ' + data.name, {type: 'grimace'});
+    }
+
+    return {
+        getColor: getColor,
+        getFormat: getFormat,
+        getFormats: getFormats,
+        setFormat: setFormat
+    };
 }]);
 
-app.controller('paletteCtrl', ['$scope', function ($scope) {
+app.controller('paletteCtrl', ['$scope', 'colorProcessor', function ($scope, colorProcessor) {
 
-  var colorOutput = {};
+    $scope.formats = colorProcessor.getFormats();
 
-  $scope.formats = [
-    {'label': 'HEX - #1234EF', value: 'toHexHash'},
-    {'label': 'HEX - 1234EF', value: 'toHexNoHash'},
-    {'label': 'RGB - rgb(255, 255, 255)', value: 'toRGB'},
-    {'label': 'RGBA - rgba(255, 255, 255, 1.0)', value: 'toRGBA'}
-  ];
+    $scope.mock = [
+        {name: 'turquoise', hex: '#1abc9c'},
+        {name: 'green sea', hex: '#16a085'},
+        {name: 'emerald', hex: '#2ecc71'},
+        {name: 'nephritis', hex: '#27ae60'},
+        {name: 'peter river', hex: '#3498db'},
+        {name: 'belize hole', hex: '#2980b9'},
+        {name: 'amethyst', hex: '#9b59b6'},
+        {name: 'wisteria', hex: '#8e44ad'},
+        {name: 'wet asphalt', hex: '#34495e'},
+        {name: 'midnight blue', hex: '#2c3e50'},
+        {name: 'sunflower', hex: '#f1c40f'},
+        {name: 'orange', hex: '#f39c12'},
+        {name: 'carrot', hex: '#e67e22'},
+        {name: 'pumpkin', hex: '#d35400'},
+        {name: 'alizarin', hex: '#e74c3c'},
+        {name: 'pomegranate', hex: '#c0392b'},
+        {name: 'clouds', hex: '#ecf0f1'},
+        {name: 'silver', hex: '#bdc3c7'},
+        {name: 'concrete', hex: '#95a5a6'},
+        {name: 'asbestos', hex: '#7f8c8d'}
+    ];
 
-  $scope.mock = [
-    {name: 'turquoise', hex: '#1abc9c'},
-    {name: 'green sea', hex: '#16a085'},
-    {name: 'emerald', hex: '#2ecc71'},
-    {name: 'nephritis', hex: '#27ae60'},
-    {name: 'peter river', hex: '#3498db'},
-    {name: 'belize hole', hex: '#2980b9'},
-    {name: 'amethyst', hex: '#9b59b6'},
-    {name: 'wisteria', hex: '#8e44ad'},
-    {name: 'wet asphalt', hex: '#34495e'},
-    {name: 'midnight blue', hex: '#2c3e50'},
-    {name: 'sunflower', hex: '#f1c40f'},
-    {name: 'orange', hex: '#f39c12'},
-    {name: 'carrot', hex: '#e67e22'},
-    {name: 'pumpkin', hex: '#d35400'},
-    {name: 'alizarin', hex: '#e74c3c'},
-    {name: 'pomegranate', hex: '#c0392b'},
-    {name: 'clouds', hex: '#ecf0f1'},
-    {name: 'silver', hex: '#bdc3c7'},
-    {name: 'concrete', hex: '#95a5a6'},
-    {name: 'asbestos', hex: '#7f8c8d'}
-  ];
+    $scope.init = function () {
+        $scope.outputFormat = colorProcessor.getFormat();
+    };
 
-  $scope.init = function () {
-    $scope.outputFormat = $scope.formats[0].value;
-  };
+    $scope.setFormat = function () {
+        colorProcessor.setFormat($scope.outputFormat);
+    };
 }]);
