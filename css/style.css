@@ -6774,9 +6774,7 @@ section {
   height: 100%;
   margin: 0;
 }
-.navbar-brand {
-  padding: 10px 15px;
-}
+/* COLOR CHIP DIRECTIVE */
 .color-chip {
   height: 25%;
   padding: 12px;
@@ -6787,19 +6785,33 @@ section {
   margin-left: 10px;
   position: absolute;
 }
-#toaster {
-  height: 100%;
-  position: fixed;
+/* HEADER DIRECTIVE */
+.navbar-brand {
+  padding: 10px 15px;
+}
+aside {
+  background-color: #f8f8f8;
   left: 0;
-  top: 0;
-  visibility: hidden;
+  padding-top: 50px;
+  position: absolute;
+  top: -210px;
+  transition: 1s ease-in-out;
   width: 100%;
-  z-index: 100;
+  z-index: 500;
 }
-#toaster.show {
-  visibility: visible;
+aside.show {
+  top: 0;
 }
-#toast text {
-  font-size: 8px;
-  text-anchor: middle;
+aside .page-header {
+  margin-top: 20px;
+}
+aside .row {
+  margin-bottom: 20px;
+}
+.palette-option {
+  text-align: center;
+}
+.palette-option img {
+  height: 72px;
+  width: 72px;
 }
