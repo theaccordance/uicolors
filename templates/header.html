@@ -15,7 +15,7 @@
                     </li>
                     <li>
                         <a ng-click="toggleOptions()">
-                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="glyphicon" ng-class="{'glyphicon-eye-open': !showOptions, 'glyphicon-eye-close': showOptions}"></span>
                         </a>
                     </li>
                     <li>
