@@ -45,7 +45,7 @@ app.directive('colorChip', ['$document', '$rootScope', 'colorProcessor', 'ngNoti
                 return 0.2126 * r + 0.7152 * g + 0.0722 * b;
             }
 
-            scope.isRow = true;
+            scope.isLarge = true;
 
             element.css({
                 backgroundColor: scope.color.hex,
@@ -60,8 +60,12 @@ app.directive('colorChip', ['$document', '$rootScope', 'colorProcessor', 'ngNoti
             });
 
             scope.$on('layout:toggle', function (event, data) {
-                scope.isRow = !scope.isRow;
+                scope.isLarge = !scope.isLarge;
             });
+
+            scope.setWidth = function (size) {
+                return 'col-md-' + size;
+            };
     }
   }
 }]);

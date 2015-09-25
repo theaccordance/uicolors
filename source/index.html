@@ -13,7 +13,7 @@
     <body ng-controller="paletteCtrl" ng-init="init()">
         <sk-header></sk-header>
         <section>
-        <color-chip ng-repeat="color in mock" color="color"></color-chip>
+            <color-chip ng-repeat="color in model.palette" color="color"></color-chip>
         </section>
     </body>
 </html>

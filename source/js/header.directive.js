@@ -4,7 +4,7 @@ app.directive('skHeader', ['$document', '$rootScope', 'colorProcessor', function
         replace: true,
         templateUrl: 'templates/header.html',
         link: function (scope) {
-            scope.isRowIcon = true;
+            scope.isLarge = true;
             scope.showOptions = false;
             scope.outputFormat = colorProcessor.getFormat();
 
@@ -12,7 +12,7 @@ app.directive('skHeader', ['$document', '$rootScope', 'colorProcessor', function
 
             scope.toggleLayout = function () {
                 $rootScope.$broadcast('layout:toggle');
-                scope.isRowIcon = !scope.isRowIcon;
+                scope.isLarge = !scope.isLarge;
             };
 
             scope.setFormat = function () {
@@ -26,7 +26,6 @@ app.directive('skHeader', ['$document', '$rootScope', 'colorProcessor', function
             scope.loadPalette = function (palette) {
                 $rootScope.$broadcast('palette:load', palette);
                 scope.showOptions = !scope.showOptions;
-                scope.isRowIcon = true;
             };
         }
     };

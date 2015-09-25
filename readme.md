@@ -6,3 +6,4 @@ Skittles is an HTMl5-based color picker.
 ## Palettes
 - FlatUI
 - Material
+- Metro

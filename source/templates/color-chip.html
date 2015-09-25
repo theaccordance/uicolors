@@ -1,4 +1,4 @@
-<div class="color-chip" ng-class="{'col-md-12': isRow, 'col-md-3': !isRow}">
+<div class="color-chip" ng-class="isLarge ? setWidth($parent.model.large) : setWidth($parent.model.small)">
   <div>
     <p>{{color.name | uppercase}}</p>
   </div>
