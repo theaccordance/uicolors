@@ -1,4 +1,4 @@
-app.directive('colorChip', ['$document', '$rootScope', 'colorUtil', function ($document, $rootScope, colorUtil) {
+app.directive('colorChip', ['$document', '$rootScope', 'colorUtil', 'ngNotify', function ($document, $rootScope, colorUtil, ngNotify) {
     return {
         restrict: 'E',
         replace: true,
@@ -54,7 +54,8 @@ app.directive('colorChip', ['$document', '$rootScope', 'colorUtil', function ($d
             element.on('click', function (event) {
                 var color = colorUtil[scope.outputFormat](scope.color.hex);
                 copyText(color);
-                $rootScope.$broadcast('notify:show', {hex: scope.color.hex});
+                // $rootScope.$broadcast('notify:show', {hex: scope.color.hex});
+                ngNotify.set('Color Copied!');
             });
     }
   }
