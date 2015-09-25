@@ -10,7 +10,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a ng-click="toggleLayout()">
-                            <span class="glyphicon" ng-class="{'glyphicon-th-list': isRowIcon, 'glyphicon-th-large': !isRowIcon}"></span>
+                            <span class="glyphicon" ng-class="isLarge ? 'glyphicon-th-large' : 'glyphicon-th'"></span>
                         </a>
                     </li>
                     <li>
@@ -39,16 +39,22 @@
                 <h4>Select a Palette:</h4>
             </div>
             <div class="row">
-                <div class="col-md-6 palette-option">
+                <div class="col-md-4 palette-option">
+                    <a ng-click="loadPalette('material')">
+                        <img src="img/icon-material.png" />
+                        <h4>Material</h4>
+                    </a>
+                </div>
+                <div class="col-md-4 palette-option">
                     <a ng-click="loadPalette('flat')">
                         <img src="img/icon-flatui.png" />
                         <h4>Flat UI</h4>
                     </a>
                 </div>
-                <div class="col-md-6 palette-option">
-                    <a ng-click="loadPalette('material')">
-                        <img src="img/icon-material.png" />
-                        <h4>Material</h4>
+                <div class="col-md-4 palette-option">
+                    <a ng-click="loadPalette('metro')">
+                        <img src="img/icon-metro.png" />
+                        <h4>Metro</h4>
                     </a>
                 </div>
             </div>
