@@ -159,8 +159,8 @@ app.service('paletteManager', [function () {
 
     var palettes = {
         flat: {
-            large: 12,
-            small: 4,
+            large: 6,
+            small: 3,
             palette: [
                 {name: 'turquoise', hex: '#1abc9c'},
                 {name: 'green sea', hex: '#16a085'},
@@ -211,7 +211,7 @@ app.service('paletteManager', [function () {
             ]
         },
         metro: {
-            large: 12,
+            large: 6,
             small: 4,
             palette: [
                 {name: 'Light Green', hex: '#99b433'},
