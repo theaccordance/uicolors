@@ -6793,7 +6793,7 @@ aside {
   background-color: #f8f8f8;
   left: 0;
   padding-top: 50px;
-  position: absolute;
+  position: fixed;
   top: -210px;
   transition: 1s ease-in-out;
   width: 100%;
