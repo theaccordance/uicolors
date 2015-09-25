@@ -6773,6 +6773,7 @@ body {
 section {
   height: 100%;
   margin: 0;
+  padding-top: 50px;
 }
 /* COLOR CHIP DIRECTIVE */
 .color-chip {
