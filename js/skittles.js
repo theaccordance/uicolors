@@ -47,21 +47,49 @@ app.directive('colorChip', ['$document', '$rootScope', 'colorProcessor', 'ngNoti
                 return 0.2126 * r + 0.7152 * g + 0.0722 * b;
             }
 
+            scope.isRow = true;
+
             element.css({
                 backgroundColor: scope.color.hex,
                 color: (getLuma(scope.color.hex) < 75) ? '#FFF' : '#000'
             });
 
-            element.on('click', function (event) {
+            element.on('click', function () {
                 var color = colorProcessor.getColor(scope.color.hex);
                 copyText(color);
                 // $rootScope.$broadcast('notify:show', {hex: scope.color.hex});
                 ngNotify.set('Color Copied!');
             });
+
+            scope.$on('layout:toggle', function (event, data) {
+                scope.isRow = !scope.isRow;
+            });
     }
   }
 }]);
 
+app.directive('skHeader', ['$document', '$rootScope', 'colorProcessor', function ($document, $rootScope, colorProcessor) {
+    return {
+        restrict: 'E',
+        replace: true,
+        templateUrl: 'templates/header.html',
+        link: function (scope) {
+            scope.isRowIcon = true;
+            scope.outputFormat = colorProcessor.getFormat();
+
+            scope.formats = colorProcessor.getFormats();
+
+            scope.toggleLayout = function () {
+                $rootScope.$broadcast('layout:toggle');
+                scope.isRowIcon = !scope.isRowIcon;
+            };
+
+            scope.setFormat = function () {
+                colorProcessor.setFormat(scope.outputFormat);
+            };
+        }
+    };
+}]);
 app.directive('flashToaster', ['$timeout', function ($timeout) {
     return {
     restrict: 'E',
@@ -176,9 +204,7 @@ app.service('colorProcessor', ['ngNotify', function (ngNotify) {
     };
 }]);
 
-app.controller('paletteCtrl', ['$scope', 'colorProcessor', function ($scope, colorProcessor) {
-
-    $scope.formats = colorProcessor.getFormats();
+app.controller('paletteCtrl', ['$scope', '$rootScope', 'colorProcessor', function ($scope, $rootScope, colorProcessor) {
 
     $scope.mock = [
         {name: 'turquoise', hex: '#1abc9c'},
@@ -203,11 +229,5 @@ app.controller('paletteCtrl', ['$scope', 'colorProcessor', function ($scope, col
         {name: 'asbestos', hex: '#7f8c8d'}
     ];
 
-    $scope.init = function () {
-        $scope.outputFormat = colorProcessor.getFormat();
-    };
 
-    $scope.setFormat = function () {
-        colorProcessor.setFormat($scope.outputFormat);
-    };
 }]);
