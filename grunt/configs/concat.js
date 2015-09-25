@@ -6,6 +6,7 @@ module.exports = function (grunt) {
               'source/js/color-chip.directive.js',
               'source/js/header.directive.js',
               'source/js/notify.directive.js',
+              'source/js/paletteManager.srvc.js',
               'source/js/colorProcessor.srvc.js',
               'source/js/palette.ctrl.js'
           ],

@@ -21,7 +21,13 @@ app.directive('skHeader', ['$document', '$rootScope', 'colorProcessor', function
 
             scope.toggleOptions = function () {
                 scope.showOptions = !scope.showOptions;
-            }
+            };
+
+            scope.loadPalette = function (palette) {
+                $rootScope.$broadcast('palette:load', palette);
+                scope.showOptions = !scope.showOptions;
+                scope.isRowIcon = true;
+            };
         }
     };
 }]);
