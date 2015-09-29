@@ -71,6 +71,10 @@ app.directive('colorChip', ['$document', '$rootScope', 'colorProcessor', 'ngNoti
             scope.setWidth = function (size) {
                 return 'col-md-' + size;
             };
+
+            scope.showValue = function (hex) {
+                return colorProcessor.getColor(hex);
+            };
     }
   }
 }]);
