@@ -5,15 +5,14 @@
         <title>Skittles</title>
         <script src="js/angular.js"></script>
         <script src="js/ng-notify.min.js"></script>
+        <script src="js/clipboard.min.js"></script>
         <script src="js/skittles.js"></script>
         <link rel="icon" type="image/png" href="img/favicon.png" />
         <link rel="stylesheet" href="css/ng-notify.min.css" />
         <link rel="stylesheet" href="css/style.css" />
     </head>
-    <body ng-controller="paletteCtrl" ng-init="init()">
+    <body ng-controller="mainCtrl">
         <sk-header></sk-header>
-        <section>
-            <color-chip ng-repeat="color in model.palette" color="color"></color-chip>
-        </section>
+        <palette palette="model"></palette>
     </body>
 </html>

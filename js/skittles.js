@@ -1,43 +1,14 @@
 var app = angular.module('skittles', ['ngNotify']);
 
-app.directive('colorChip', ['$document', '$rootScope', 'colorProcessor', 'ngNotify', function ($document, $rootScope, colorProcessor, ngNotify) {
+app.directive('color', ['$document', '$rootScope', 'colorProcessor', 'ngNotify', function ($document, $rootScope, colorProcessor, ngNotify) {
     return {
         restrict: 'E',
         replace: true,
-        templateUrl: 'templates/color-chip.html',
+        templateUrl: 'templates/color.html',
         scope: {
           color: '=color'
         },
         link: function (scope, element) {
-            function createNode(text) {
-                var node = $document[0].createElement('textarea');
-                node.style.position = 'absolute';
-                node.style.left = '-10000px';
-                node.textContent = text;
-                return node;
-            }
-
-            function copyNode(node) {
-                // Set inline style to override css styles
-                $document[0].body.style.webkitUserSelect = 'initial';
-
-                var selection = $document[0].getSelection();
-                selection.removeAllRanges();
-                node.select();
-
-                $document[0].execCommand('copy');
-                selection.removeAllRanges();
-
-                // Reset inline style
-                $document[0].body.style.webkitUserSelect = '';
-            }
-
-            function copyText(text) {
-                var node = createNode(text);
-                $document[0].body.appendChild(node);
-                copyNode(node);
-                $document[0].body.removeChild(node);
-            }
 
             function getLuma(hex) {
                 var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex),
@@ -52,13 +23,6 @@ app.directive('colorChip', ['$document', '$rootScope', 'colorProcessor', 'ngNoti
             element.css({
                 backgroundColor: scope.color.hex,
                 color: (getLuma(scope.color.hex) < 75) ? '#FFF' : '#000'
-            });
-
-            element.on('click', function () {
-                var color = colorProcessor.getColor(scope.color.hex);
-                copyText(color);
-                // $rootScope.$broadcast('notify:show', {hex: scope.color.hex});
-                ngNotify.set('Color Copied!');
             });
 
             scope.$on('layout:toggle', function (event, data) {
@@ -106,6 +70,29 @@ app.directive('skHeader', ['$document', '$rootScope', 'colorProcessor', function
                 scope.showOptions = !scope.showOptions;
                 scope.isLarge = true;
             };
+        }
+    };
+}]);
+app.directive('palette', ['ngNotify',function (ngNotify) {
+    return {
+        restrict: 'E',
+        replace: true,
+        templateUrl: 'templates/palette.html',
+        scope: {
+            model: '=palette'
+        },
+        link: function (scope, element) {
+            var clipboard = new Clipboard('.color-chip');
+
+            clipboard.on('success', function (e) {
+                ngNotify.set('Color copied to clipboard!');
+                e.clearSelection();
+            });
+
+            clipboard.on('error', function (e) {
+                console.log(e);
+                ngNotify.set('Press ⌘-C to Copy');
+            });
         }
     };
 }]);
@@ -265,7 +252,7 @@ app.service('colorProcessor', ['ngNotify', function (ngNotify) {
     };
 }]);
 
-app.controller('paletteCtrl', ['$scope', 'ngNotify', 'paletteManager', function ($scope, ngNotify, paletteManager) {
+app.controller('mainCtrl', ['$scope', 'ngNotify', 'paletteManager', function ($scope, ngNotify, paletteManager) {
     $scope.model = paletteManager.load('flat');
 
     $scope.$on('palette:load', function (event, palette) {
