@@ -1,4 +1,4 @@
-<div class="color-chip" ng-class="isLarge ? setWidth($parent.model.large) : setWidth($parent.model.small)">
+<div class="color-chip" ng-class="isLarge ? setWidth($parent.model.large) : setWidth($parent.model.small)" data-clipboard-text="{{showValue(color.hex)}}">
   <div>
     <p class="chip-name" ng-bind="color.name | uppercase"></p>
     <p class="chip-value" ng-bind="showValue(color.hex) | uppercase"></p>

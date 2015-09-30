@@ -6,7 +6,8 @@ module.exports = function (grunt) {
                     expand: true,
                     src: [
                         'node_modules/angular/angular.js',
-                        'bower_components/ng-notify/dist/ng-notify.min.js'
+                        'bower_components/ng-notify/dist/ng-notify.min.js',
+                        'bower_components/clipboard/dist/clipboard.min.js'
                     ],
                     dest: 'preview/js/',
                     filter: 'isFile',
