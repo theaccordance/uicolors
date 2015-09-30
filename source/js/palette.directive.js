@@ -15,8 +15,7 @@ app.directive('palette', ['ngNotify',function (ngNotify) {
                 e.clearSelection();
             });
 
-            clipboard.on('error', function (e) {
-                console.log(e);
+            clipboard.on('error', function () {
                 ngNotify.set(['Press ', key, '-C to Copy'].join(''));
             });
         }
