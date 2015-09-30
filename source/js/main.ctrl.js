@@ -1,4 +1,4 @@
-app.controller('paletteCtrl', ['$scope', 'ngNotify', 'paletteManager', function ($scope, ngNotify, paletteManager) {
+app.controller('mainCtrl', ['$scope', 'ngNotify', 'paletteManager', function ($scope, ngNotify, paletteManager) {
     $scope.model = paletteManager.load('flat');
 
     $scope.$on('palette:load', function (event, palette) {

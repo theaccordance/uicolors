@@ -7,7 +7,7 @@ module.exports = function (grunt) {
               'source/js/header.directive.js',
               'source/js/paletteManager.srvc.js',
               'source/js/colorProcessor.srvc.js',
-              'source/js/palette.ctrl.js'
+              'source/js/main.ctrl.js'
           ],
           dest: 'preview/js/skittles.js'
       }
