@@ -3,7 +3,7 @@ module.exports = function (grunt) {
       skittles: {
           src: [
               'source/js/app.module.js',
-              'source/js/color-chip.directive.js',
+              'source/js/color.directive.js',
               'source/js/header.directive.js',
               'source/js/palette.directive.js',
               'source/js/paletteManager.srvc.js',

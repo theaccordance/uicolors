@@ -1,8 +1,8 @@
-app.directive('colorChip', ['$document', '$rootScope', 'colorProcessor', 'ngNotify', function ($document, $rootScope, colorProcessor, ngNotify) {
+app.directive('color', ['$document', '$rootScope', 'colorProcessor', 'ngNotify', function ($document, $rootScope, colorProcessor, ngNotify) {
     return {
         restrict: 'E',
         replace: true,
-        templateUrl: 'templates/color-chip.html',
+        templateUrl: 'templates/color.html',
         scope: {
           color: '=color'
         },
