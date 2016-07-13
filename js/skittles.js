@@ -253,7 +253,7 @@ app.service('colorProcessor', ['ngNotify', function (ngNotify) {
 }]);
 
 app.controller('mainCtrl', ['$scope', 'ngNotify', 'paletteManager', function ($scope, ngNotify, paletteManager) {
-    $scope.model = paletteManager.load('flat');
+    $scope.model = paletteManager.load('material');
 
     $scope.$on('palette:load', function (event, palette) {
         $scope.model = paletteManager.load(palette);
