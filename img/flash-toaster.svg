@@ -1,7 +1,0 @@
-<svg id="toaster" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="none">
-	<path d='M 40 -21.875 C 11.356078 -21.875 -11.875 1.3560784 -11.875 30 C -11.875 58.643922 11.356078 81.875 40 81.875 C 68.643922 81.875 91.875 58.643922 91.875 30 C 91.875 1.3560784 68.643922 -21.875 40 -21.875 Z'></path>
-	<svg id="toast" x="0" y="0" height="20" width="80" opacity="1">
-		<rect x="0", y="0" ng-attr-height="{{rect.height}}" width="80" fill="#FFFFFF" font-size="10px"></rect>
-		<text x="50%" y="50%">Copied!</text>
-	</svg>
-</svg>
