@@ -14,7 +14,7 @@ module.exports = function (grunt) {
         return config;
     }
 
-    function init() {
+    function loadGrunt() {
         var config = {
             pkg: grunt.file.readJSON('package.json')
         };
@@ -30,9 +30,18 @@ module.exports = function (grunt) {
 
         grunt.initConfig(config);
     }
-    init();
+    loadGrunt();
 
-    grunt.registerTask('build', ['clean', 'copy', 'concat', 'less']);
-    grunt.registerTask('default', ['build', 'connect']);
+    function getPalettes() {
+        var palettes = [];
+        grunt.file.expand({filter: 'isFile'},'palettes/**').forEach(function (filePath) {
+            palettes.push(grunt.file.readJSON(filePath));
+        });
+        grunt.config('palettes', palettes);
+    }
+
+    grunt.registerTask('getPalettes', getPalettes);
+    grunt.registerTask('build', ['getPalettes', 'clean', 'copy:public', 'copy:index']);
+    grunt.registerTask('serve', ['build', 'connect', 'watch']);
     grunt.registerTask('publish', ['build', 'gh-pages']);
 };

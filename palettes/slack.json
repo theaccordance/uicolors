@@ -1,0 +1,10 @@
+{
+  "name": "Slack",
+  "colors": [
+    {"name": "Green", "hex": "#3EB890"},
+    {"name": "Blue", "hex": "#70CADB"},
+    {"name": "Gold", "hex": "#E8A723"},
+    {"name": "Rose", "hex": "#E01765"},
+    {"name": "Dark Purple", "hex": "#E01765"}
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "palette": "Flat UI",
+  "name": "Flat UI",
   "colors": [
     {"name": "turquoise", "hex": "#1abc9c"},
     {"name": "green sea", "hex": "#16a085"},
