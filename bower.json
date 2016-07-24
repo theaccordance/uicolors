@@ -15,5 +15,8 @@
   ],
   "dependencies": {
     "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {
+    "angular": "^1.5.8"
   }
 }
