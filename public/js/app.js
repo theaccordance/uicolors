@@ -62,27 +62,97 @@
                 {"name": "Dark Purple", "hex": "#443642"}
             ]
         }
-    ];
+    ],
+        pageCornerCmpnt = {
+            bindings: {
+                background: '<?',
+                corner: '<?'
+            },
+            controller: pageCornerCtrl,
+            templateUrl: 'partials/page-corner.html'
+        },
+        colorChipCmpnt = {
+            bindings: {
+                color: '<',
+                onColorSelect: '&'
+            },
+            controller: colorChipCtrl ,
+            templateUrl: 'partials/color-chip.html'
+        },
+        paletteCmpnt = {
+            bindings: {
+                palette: '<',
+                onColorSelect: '&'
+            },
+            controller: paletteCtrl,
+            templateUrl: 'partials/palette.html'
+        };
 
     angular
         .module('jm.colorPalettes', [])
         .constant('Palettes', PaletteConst)
+        .component('pageCorner', pageCornerCmpnt)
+        .component('colorChip', colorChipCmpnt)
+        .component('palette', paletteCmpnt)
         .controller('mainCtrl', mainCtrl);
 
     mainCtrl.$inject = ['Palettes'];
 
     function mainCtrl(Palettes) {
         var vm = this;
-        vm.Palettes = Palettes;
-        console.log(vm.Palettes);
-        vm.background = '#ecf0f1';
-        vm.selectColor = selectColor;
 
-        function selectColor(hex) {
+        function setBackground(hex) {
+            window.console.log('setting background', hex);
             vm.background = hex;
-            console.log('hex', hex);
-            console.log('background', vm.background);
         }
+
+        vm.Palettes = Palettes;
+        vm.background = '#ecf0f1';
+        vm.setBackground = setBackground;
     }
+
+    function pageCornerCtrl() {
+        var vm = this;
+        vm.repoUrl = 'https://github.com/theaccordance/color-palettes';
+
+        function getLuma(hex) {
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex),
+                r = parseInt(result[1], 16),
+                g = parseInt(result[2], 16),
+                b = parseInt(result[3], 16);
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        }
+
+        function onInit() {
+            if (!vm.background) {
+                window.console.log('No Background provided, setting to default...');
+                vm.background = '#ffffff';
+            }
+            if (!vm.corner) {
+                window.console.log('No Corner color provided, setting to default...');
+                vm.corner = (getLuma(vm.background) < 75) ? '#FFF' : '#000';
+            }
+            vm.fill = vm.corner;
+        }
+
+        function onChanges(changeObj) {
+            if (vm.corner !== vm.fill) {
+                vm.fill = vm.corner;
+            }
+
+            if (changeObj.background) {
+                if (changeObj.background.currentValue === vm.corner) {
+                    vm.fill = (getLuma(vm.background) < 75) ? '#FFF' : '#000';
+                }
+            }
+        }
+
+        vm.$onInit = onInit;
+        vm.$onChanges = onChanges;
+    }
+
+
+
+
 
 })();
