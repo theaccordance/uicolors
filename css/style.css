@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-    background-color: #ecf0f1;
+    transition: 500ms background-color ease-in-out;
 }
 
 header {
