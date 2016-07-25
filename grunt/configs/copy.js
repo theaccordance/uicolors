@@ -4,7 +4,9 @@ module.exports = function (grunt) {
             files: [
                 {expand: true, cwd: 'public/assets/', src: ['*'], dest: 'preview/assets', filter: 'isFile'},
                 {expand: true, cwd: 'public/css/', src: ['*'], dest: 'preview/css', filter: 'isFile'},
-                {expand: true, cwd: 'public/js/', src: ['*'], dest: 'preview/js', filter: 'isFile'}
+                {expand: true, cwd: 'public/js/', src: ['*'], dest: 'preview/js', filter: 'isFile'},
+                {expand: true, cwd: 'public/partials/', src: ['*'], dest: 'preview/partials', filter: 'isFile'},
+                {expand: true, cwd: 'public/app/', src: ['**'], dest: 'preview/app', filter: 'isFile'}
             ]
         },
         index: {
