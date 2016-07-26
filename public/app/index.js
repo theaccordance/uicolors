@@ -16,6 +16,6 @@ require([
     'app/app.module'
 ], function (angular) {
     angular.element(document).ready(function () {
-        angular.bootstrap(document, ['jm.colorPalettes']);
+        angular.bootstrap(document, ['jmColor']);
     });
 });

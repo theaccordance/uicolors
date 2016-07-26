@@ -7,7 +7,7 @@ define([
             PaletteModule,
             pageCornerCmpnt,
             mainCtrl) {
-    return angular.module('jm.colorPalettes', ['palette'])
+    return angular.module('jmColor', ['jmColor.Palette'])
         .component('pageCorner', pageCornerCmpnt)
         .controller('mainCtrl', mainCtrl);
 });
