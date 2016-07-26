@@ -1,0 +1,9 @@
+<!-- Single button -->
+<div class="btn-group" ng-class="{'open': $ctrl.open }">
+    <button ng-click="$ctrl.open = !$ctrl.open" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Palettes <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li ng-repeat="paletteName in $ctrl.palettes" ng-class="{'active': paletteName === $ctrl.activePalette }"><a ng-click="$ctrl.selectPalette(paletteName)" ng-bind="paletteName"></a></li>
+    </ul>
+</div>

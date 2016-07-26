@@ -1,6 +1,6 @@
 define([], function () {
 
-    return ['PALETTES', function(PALETTES) {
+    return ['palette', '$stateParams', function(palette) {
         var vm = this;
 
         function setBackground(hex) {
@@ -8,8 +8,12 @@ define([], function () {
             vm.background = hex;
         }
 
-        vm.Palettes = PALETTES;
-        vm.background = '#ecf0f1';
+        function onInit() {
+            vm.background = '#ecf0f1';
+            vm.palette = palette;
+        }
+
+        vm.$onInit = onInit;
         vm.setBackground = setBackground;
     }];
 

@@ -4,7 +4,6 @@ define([], function () {
         var vm = this;
 
         function selectColor(hex) {
-            window.console.log('chip select', hex);
             vm.onColorSelect({$event: hex});
         }
 

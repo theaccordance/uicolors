@@ -3,7 +3,8 @@ require.config({
         'angular': 'js/angular.min'
     },
     shim: {
-        'angular' : {'exports' : 'angular'}
+        'angular' : {'exports' : 'angular'},
+        'js/angular-ui-router.min': {deps: ['angular']}
     },
     baseUrl: '.',
     priority : [

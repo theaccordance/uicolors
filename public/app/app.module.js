@@ -1,12 +1,16 @@
 define([
     'angular',
+    'app/core/core.module',
     'app/layout/layout.module',
     'app/palette/palette.module',
-    'app/core/main.ctrl'
+    'app/app.config'
+
 ], function(angular,
+            CoreModule,
             LayoutModule,
             PaletteModule,
-            mainCtrl) {
-    return angular.module('color', ['color.layout', 'color.palette'])
-        .controller('mainCtrl', mainCtrl);
+            appConfig) {
+    return angular
+        .module('color', ['color.core', 'color.layout', 'color.palette'])
+        .config(appConfig);
 });

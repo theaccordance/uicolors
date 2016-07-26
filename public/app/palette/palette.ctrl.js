@@ -4,9 +4,14 @@ define([], function () {
         var vm = this;
 
         function selectColor(hex) {
-            window.console.log('palette selection', hex);
             vm.onColorSelect({$event: hex});
         }
+
+        function onInit() {
+
+        }
+
+        vm.$onInit = onInit;
         vm.selectColor = selectColor;
     }
 
