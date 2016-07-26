@@ -1,13 +1,12 @@
 define([
     'angular',
+    'app/layout/layout.module',
     'app/palette/palette.module',
-    'app/layout/page-corner/page.corner.component',
     'app/core/main.ctrl'
 ], function(angular,
+            LayoutModule,
             PaletteModule,
-            pageCornerCmpnt,
             mainCtrl) {
-    return angular.module('jmColor', ['jmColor.Palette'])
-        .component('pageCorner', pageCornerCmpnt)
+    return angular.module('color', ['color.layout', 'color.palette'])
         .controller('mainCtrl', mainCtrl);
 });

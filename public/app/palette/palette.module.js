@@ -8,7 +8,7 @@ define([
             PalettesConst,
             paletteCmpnt,
             colorChipCmpnt) {
-    return angular.module('jmColor.Palette', [])
+    return angular.module('color.palette', [])
         .constant('PALETTES', PalettesConst)
         .component('palette', paletteCmpnt)
         .component('colorChip', colorChipCmpnt);
