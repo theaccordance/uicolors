@@ -1,21 +1,13 @@
 define([
     'angular',
-    'app/core/palettes.constant',
-    'app/palette/palette.component',
-    'app/palette/color-chip/color.chip.component',
+    'app/palette/palette.module',
     'app/layout/page-corner/page.corner.component',
     'app/core/main.ctrl'
-
 ], function(angular,
-            PalettesConst,
-            paletteCmpnt,
-            colorChipCmpnt,
+            PaletteModule,
             pageCornerCmpnt,
             mainCtrl) {
-    return angular.module('jm.colorPalettes', [])
-        .constant('PALETTES', PalettesConst)
-        .component('palette', paletteCmpnt)
-        .component('colorChip', colorChipCmpnt)
+    return angular.module('jm.colorPalettes', ['palette'])
         .component('pageCorner', pageCornerCmpnt)
         .controller('mainCtrl', mainCtrl);
 });
