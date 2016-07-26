@@ -1,5 +1,5 @@
 define([
-    'app/page-corner/page.corner.ctrl'
+    'app/layout/page-corner/page.corner.ctrl'
 ], function (pageCornerCtrl) {
     return {
         bindings: {
