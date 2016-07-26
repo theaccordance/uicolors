@@ -1,6 +1,6 @@
 {
   "name": "color-palettes",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "homepage": "http://joemainwaring.com/color-palettes/",
   "authors": [
     "Joe Mainwaring <jm@theaccordance.com>"
@@ -14,7 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "angular-ui-router": "ui-router#^0.3.1"
   },
   "devDependencies": {
     "angular": "^1.5.8"
