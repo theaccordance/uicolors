@@ -1,5 +1,5 @@
 define([
-    'app/page-corner/page.corner.ctrl'
+    'app/layout/page-corner/page.corner.ctrl'
 ], function (pageCornerCtrl) {
     return {
         bindings: {
@@ -7,6 +7,6 @@ define([
             corner: '<?'
         },
         controller: pageCornerCtrl,
-        templateUrl: 'app/page-corner/page-corner.html'
+        templateUrl: 'app/layout/page-corner/page-corner.html'
     };
 });

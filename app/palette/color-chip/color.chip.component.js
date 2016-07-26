@@ -1,5 +1,5 @@
 define([
-    'app/color-chip/color.chip.ctrl'
+    'app/palette/color-chip/color.chip.ctrl'
 ], function (colorChipCtrl) {
     return {
         bindings: {
@@ -7,6 +7,6 @@ define([
             onColorSelect: '&'
         },
         controller: colorChipCtrl,
-        templateUrl: 'app/color-chip/color-chip.html'
+        templateUrl: 'app/palette/color-chip/color-chip.html'
     };
 });
