@@ -18,6 +18,8 @@
     "grunt-contrib-less": "^1.0.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-gh-pages": "^0.10.0",
+    "grunt-jsonlint": "^1.1.0",
+    "grunt-ng-annotate": "^3.0.0",
     "load-grunt-tasks": "^3.2.0"
   }
 }

@@ -1,22 +1,14 @@
 module.exports = function (grunt) {
     return {
-        public: {
+        source: {
             files: [
-                {expand: true, cwd: 'public/assets/', src: ['*'], dest: 'preview/assets', filter: 'isFile'},
-                {expand: true, cwd: 'public/css/', src: ['*'], dest: 'preview/css', filter: 'isFile'},
-                {expand: true, cwd: 'public/js/', src: ['*'], dest: 'preview/js', filter: 'isFile'},
-                {expand: true, cwd: 'public/partials/', src: ['*'], dest: 'preview/partials', filter: 'isFile'},
-                {expand: true, cwd: 'public/app/', src: ['**'], dest: 'preview/app', filter: 'isFile'}
+                {expand: true, cwd: 'source/', src: ['**/*.html'], dest: 'preview/', filter: 'isFile'},
+                {expand: true, src: ['source/assets/*'], dest: 'preview/assets', filter: 'isFile', flatten: true},
+                {expand: true, src: ['source/css/*'], dest: 'preview/css', filter: 'isFile', flatten: true},
+                {expand: true, src: ['source/fonts/*'], dest: 'preview/fonts', filter: 'isFile', flatten: true},
+                {expand: true, src: ['source/lib/*'], dest: 'preview/lib', filter: 'isFile', flatten: true},
+                {expand: true, src: ['source/index.js'], dest: 'preview', filter: 'isFile', flatten: true}
             ]
-        },
-        index: {
-            options: {
-                process: function (content) {
-                    return grunt.template.process(content);
-                }
-            },
-            src: 'public/index.html',
-            dest: 'preview/index.html'
         }
     };
 };

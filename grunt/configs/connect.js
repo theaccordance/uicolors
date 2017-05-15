@@ -4,7 +4,7 @@ module.exports = function (grunt) {
             options: {
                 hostname: 'localhost',
                 port: '4949',
-                base: 'source'
+                base: 'preview'
             }
         }
     };

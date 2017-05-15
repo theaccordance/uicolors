@@ -41,7 +41,7 @@ module.exports = function (grunt) {
     }
 
     grunt.registerTask('getPalettes', getPalettes);
-    grunt.registerTask('build', ['getPalettes', 'clean', 'copy:public', 'copy:index']);
+    grunt.registerTask('build', ['clean', 'jsonlint', 'ngAnnotate',  'copy:source']);
     grunt.registerTask('serve', ['build', 'connect', 'watch']);
     grunt.registerTask('publish', ['build', 'gh-pages']);
 };
