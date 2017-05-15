@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand">Color Palettes</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ng-repeat="palette in $ctrl.palettes" ng-class="{ 'active': $ctrl.active(palette.slug)}"><a ui-sref="palette({palette: palette.slug})" ng-bind="palette.name"></a></li>
+        </ul>
+        <form class="navbar-form navbar-right">
+            <div class="form-group">
+                <label>Color Format:</label>
+                <select class="form-control" ng-model="$ctrl.format" ng-options="item as item.name for item in $ctrl.formats" ng-change="$ctrl.setFormat()">
+                </select>
+            </div>
+        </form>
+    </div>
+</nav>

@@ -1,10 +1,9 @@
-define([
-    'app/palette/palette.ctrl'
-], function (paletteCtrl) {
+define(['./palette.ctrl'], function (paletteCtrl) {
+    "use strict";
+
     return {
         bindings: {
-            palette: '<',
-            onColorSelect: '&'
+            palette: '<'
         },
         controller: paletteCtrl,
         templateUrl: 'app/palette/palette.html'

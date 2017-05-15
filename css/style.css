@@ -4,6 +4,7 @@ html, body {
 }
 
 body {
+    padding-top: 50px;
     transition: 500ms background-color ease-in-out;
 }
 
@@ -26,4 +27,15 @@ header {
 
 .panel-body h4 {
     text-transform: capitalize;
+}
+
+h2 {
+    text-transform: capitalize;
+}
+
+github {
+    display: block;
+    position: fixed;
+    top: 50px;
+    right: 0;
 }

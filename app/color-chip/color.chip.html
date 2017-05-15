@@ -1,7 +1,7 @@
-<div class="panel" ng-click="$ctrl.selectColor($ctrl.color.hex)">
+<div class="panel" ng-click="$ctrl.selectColor($ctrl.color.hex)" data-clipboard-text="{{$ctrl.colorValue()}}">
     <div class="panel-heading" ng-style="{'background-color': $ctrl.color.hex}"></div>
     <div class="panel-body">
         <h4 ng-bind="$ctrl.color.name"></h4>
-        <p ng-bind="$ctrl.colorCode"></p>
+        <p ng-bind="$ctrl.colorValue()"></p>
     </div>
 </div>

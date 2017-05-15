@@ -1,7 +1,35 @@
-define([], function () {
-    return [
-        {
+define(function () {
+    "use strict";
+    return {
+        "apps": {
+            "name": "Popular Apps",
+            "slug": "apps",
+            "colors": [
+                {"name": "Facebook", "hex": "#3b5998"},
+                {"name": "Twitter", "hex": "#20C7FF"},
+                {"name": "LinkedIn", "hex": "#0077B5"},
+                {"name": "Tumblr", "hex": "#33516E"},
+                {"name": "Dribbble", "hex": "#ea4c89"},
+                {"name": "Instagram", "hex": "#c32aa3"},
+                {"name": "Pinterest", "hex": "#cb2027"},
+                {"name": "Google+", "hex": "#df4a32"},
+                {"name": "Snapchat", "hex": "#fffc00"},
+                {"name": "Vimeo", "hex": "#45bbff"},
+                {"name": "Foursquare", "hex": "#fc4575"},
+                {"name": "Swarm", "hex": "#ffb000"},
+                {"name": "Yahoo!", "hex": "#430297"},
+                {"name": "Soundcloud", "hex": "#ff5500"},
+                {"name": "Spotify", "hex": "#1ed760"},
+                {"name": "Reddit", "hex": "#ff5700"},
+                {"name": "Pocket", "hex": "#ee4056"},
+                {"name": "Quora", "hex": "#aa2200"},
+                {"name": "Listly", "hex": "#df6d46"},
+                {"name": "Vine", "hex": "#00b489"}
+            ]
+        },
+        "flat-ui": {
             "name": "Flat UI",
+            "slug": "flat-ui",
             "colors": [
                 {"name": "turquoise", "hex": "#1abc9c"},
                 {"name": "green sea", "hex": "#16a085"},
@@ -25,8 +53,9 @@ define([], function () {
                 {"name": "asbestos", "hex": "#7f8c8d"}
             ]
         },
-        {
+        "material": {
             "name": "Material",
+            "slug": "material",
             "colors": [
                 {"name": "Red", "hex": "#F44336"},
                 {"name": "Pink", "hex": "#E91E63"},
@@ -50,8 +79,33 @@ define([], function () {
                 {"name": "White", "hex": "#FFFFFF"}
             ]
         },
-        {
+        "metro": {
+            "name": "Metro UI",
+            "slug": "metro",
+            "colors": [
+                {"name": 'Light Green', "hex": '#99b433'},
+                {"name": 'Green', "hex": '#00a300'},
+                {"name": 'Dark Green', "hex": '#1e7145'},
+                {"name": 'Magenta', "hex": '#ff0097'},
+                {"name": 'Light Purple', "hex": '#9f00a7'},
+                {"name": 'Purple', "hex": '#7e3878'},
+                {"name": 'Dark Purple', "hex": '#603cba'},
+                {"name": 'Darken', "hex": '#1d1d1d'},
+                {"name": 'Teal', "hex": '#00aba9'},
+                {"name": 'Light Blue', "hex": '#eff4ff'},
+                {"name": 'Blue', "hex": '#2d89ef'},
+                {"name": 'Dark Blue', "hex": '#2b5797'},
+                {"name": 'Yellow', "hex": '#ffc40d'},
+                {"name": 'Orange', "hex": '#e3a21a'},
+                {"name": 'Dark Orange', "hex": '#da532c'},
+                {"name": 'Red', "hex": '#ee1111'},
+                {"name": 'Dark Red', "hex": '#b91d47'},
+                {"name": 'White', "hex": '#FFFFFF'}
+            ]
+        },
+        "slack": {
             "name": "Slack",
+            "slug": "slack",
             "colors": [
                 {"name": "Green", "hex": "#3EB890"},
                 {"name": "Blue", "hex": "#70CADB"},
@@ -60,5 +114,5 @@ define([], function () {
                 {"name": "Dark Purple", "hex": "#443642"}
             ]
         }
-    ];
+    };
 });
