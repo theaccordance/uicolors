@@ -5,11 +5,13 @@ define([
     'app/palette/palette.module',
     'app/app.config'
 
-], function(angular,
-            CoreModule,
-            LayoutModule,
-            PaletteModule,
-            appConfig) {
+], function(
+    angular,
+    CoreModule,
+    LayoutModule,
+    PaletteModule,
+    appConfig
+) {
     return angular
         .module('color', ['color.core', 'color.layout', 'color.palette'])
         .config(appConfig);

@@ -1,6 +1,4 @@
-define([
-    'angular'
-], function (angular) {
+define(function () {
 
     function routesConfig($urlRouterProvider) {
         $urlRouterProvider.when('', '/flat-ui');

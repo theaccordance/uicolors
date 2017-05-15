@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html ng-app="skittles">
-    <head>
-        <meta charset="utf-8" />
-        <title>Skittles</title>
-        <script src="js/angular.js"></script>
-        <script src="js/ng-notify.min.js"></script>
-        <script src="js/clipboard.min.js"></script>
-        <script src="js/skittles.js"></script>
-        <link rel="icon" type="image/png" href="img/favicon.png" />
-        <link rel="stylesheet" href="css/ng-notify.min.css" />
-        <link rel="stylesheet" href="css/style.css" />
-    </head>
-    <body ng-controller="mainCtrl">
-        <sk-header></sk-header>
-        <palette palette="model"></palette>
-    </body>
+<html>
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Color Palettes</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/ng-notify.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <script src="lib/require.js"></script>
+    <script type="text/javascript">
+        require(["index"]);
+    </script>
+
+</head>
+<body paint-wall>
+    <toolbar></toolbar>
+    <section>
+        <div class="container" ui-view></div>
+    </section>
+    <github></github>
+</body>
 </html>

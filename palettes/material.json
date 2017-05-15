@@ -1,5 +1,6 @@
 {
   "name": "Material",
+  "slug": "material",
   "colors": [
     {"name": "Red", "hex": "#F44336"},
     {"name": "Pink", "hex": "#E91E63"},

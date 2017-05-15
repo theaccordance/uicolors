@@ -1,0 +1,41 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    padding-top: 50px;
+    transition: 500ms background-color ease-in-out;
+}
+
+header {
+    padding-top: 48px;
+    text-align: center;
+}
+
+.panel {
+    border: 0;
+}
+
+.panel-heading {
+    height: 96px;
+}
+
+.panel-body {
+    padding: 4px;
+}
+
+.panel-body h4 {
+    text-transform: capitalize;
+}
+
+h2 {
+    text-transform: capitalize;
+}
+
+github {
+    display: block;
+    position: fixed;
+    top: 50px;
+    right: 0;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Metro UI",
+  "slug": "metro",
+  "colors": [
+    {"name": 'Light Green', "hex": '#99b433'},
+    {"name": 'Green', "hex": '#00a300'},
+    {"name": 'Dark Green', "hex": '#1e7145'},
+    {"name": 'Magenta', "hex": '#ff0097'},
+    {"name": 'Light Purple', "hex": '#9f00a7'},
+    {"name": 'Purple', "hex": '#7e3878'},
+    {"name": 'Dark Purple', "hex": '#603cba'},
+    {"name": 'Darken', "hex": '#1d1d1d'},
+    {"name": 'Teal', "hex": '#00aba9'},
+    {"name": 'Light Blue', "hex": '#eff4ff'},
+    {"name": 'Blue', "hex": '#2d89ef'},
+    {"name": 'Dark Blue', "hex": '#2b5797'},
+    {"name": 'Yellow', "hex": '#ffc40d'},
+    {"name": 'Orange', "hex": '#e3a21a'},
+    {"name": 'Dark Orange', "hex": '#da532c'},
+    {"name": 'Red', "hex": '#ee1111'},
+    {"name": 'Dark Red', "hex": '#b91d47'},
+    {"name": 'White', "hex": '#FFFFFF'}
+  ]
+}

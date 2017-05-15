@@ -1,0 +1,26 @@
+{
+  "name": "Popular Apps",
+  "slug": "apps",
+  "colors": [
+    {"name": "Facebook", "hex": "#3b5998"},
+    {"name": "Twitter", "hex": "#20C7FF"},
+    {"name": "LinkedIn", "hex": "#0077B5"},
+    {"name": "Tumblr", "hex": "#33516E"},
+    {"name": "Dribbble", "hex": "#ea4c89"},
+    {"name": "Instagram", "hex": "#c32aa3"},
+    {"name": "Pinterest", "hex": "#cb2027"},
+    {"name": "Google+", "hex": "#df4a32"},
+    {"name": "Snapchat", "hex": "#fffc00"},
+    {"name": "Vimeo", "hex": "#45bbff"},
+    {"name": "Foursquare", "hex": "#fc4575"},
+    {"name": "Swarm", "hex": "#ffb000"},
+    {"name": "Yahoo!", "hex": "#430297"},
+    {"name": "Soundcloud", "hex": "#ff5500"},
+    {"name": "Spotify", "hex": "#1ed760"},
+    {"name": "Reddit", "hex": "#ff5700"},
+    {"name": "Pocket", "hex": "#ee4056"},
+    {"name": "Quora", "hex": "#aa2200"},
+    {"name": "Listly", "hex": "#df6d46"},
+    {"name": "Vine", "hex": "#00b489"}
+  ]
+}

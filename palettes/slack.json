@@ -1,5 +1,6 @@
 {
   "name": "Slack",
+  "slug": "slack",
   "colors": [
     {"name": "Green", "hex": "#3EB890"},
     {"name": "Blue", "hex": "#70CADB"},
