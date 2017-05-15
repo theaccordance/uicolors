@@ -14,13 +14,20 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.6",
     "angular-ui-router": "^1.0.3",
-    "ngclipboard": "^1.1.1",
+    "bootstrap": "^3.3.6",
     "clipboard": "^1.6.1",
-    "ng-notify": "^0.8.0"
+    "ng-notify": "^0.8.0",
+    "ngclipboard": "^1.1.1"
   },
   "devDependencies": {
     "angular": "^1.5.8"
-  }
+  },
+  "description": "color pallete picker",
+  "main": "index.js",
+  "repository": {
+    "url": "git@github.com:theaccordance/color-palettes.git",
+    "type": "git"
+  },
+  "author": "Joe Mainwaring <jm@theaccordance.com>"
 }
