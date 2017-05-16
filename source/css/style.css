@@ -39,3 +39,23 @@ github {
     top: 50px;
     right: 0;
 }
+
+color-chip div.color-tooltip {
+    border: 2px solid #000;
+    color: #000;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+    padding: 4px 8px;
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+}
+
+color-chip:hover div.color-tooltip {
+    opacity: 1;
+}
+
+color-chip div.color-tooltip.inverse {
+    border-color: #FFF;
+    color: #FFF;
+}
