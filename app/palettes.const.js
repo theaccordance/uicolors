@@ -24,7 +24,8 @@ define(function () {
                 {"name": "Pocket", "hex": "#ee4056"},
                 {"name": "Quora", "hex": "#aa2200"},
                 {"name": "Listly", "hex": "#df6d46"},
-                {"name": "Vine", "hex": "#00b489"}
+                {"name": "Vine", "hex": "#00b489"},
+                {"name": "YouTube", "hex": "#b31217"}
             ]
         },
         "flat-ui": {
