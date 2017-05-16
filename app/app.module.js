@@ -7,6 +7,7 @@ define([
     './palette/palette.component',
     './toolbar/toolbar.component',
     './util/color.format',
+    './util/luma',
     './util/paint.wall',
     './util/palettes',
     '../lib/angular-ui-router.min',
@@ -20,6 +21,7 @@ define([
     palette,
     toolbar,
     colorFormat,
+    luma,
     paintWall,
     palettes
 ) {
@@ -32,6 +34,7 @@ define([
         .component('palette', palette)
         .component('toolbar', toolbar)
         .factory('ColorFormat', colorFormat)
+        .factory('Luma', luma)
         .directive('paintWall', paintWall)
         .factory('Palettes', palettes);
 });

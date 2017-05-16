@@ -1,6 +1,6 @@
 define(function () {
     "use strict";
-    return ["$rootScope", "ColorFormat", function ($rootScope, ColorFormat) {
+    return ["$rootScope", "ColorFormat", "Luma", function ($rootScope, ColorFormat, Luma) {
         "ngInject";
         var $ctrl = this;
 
@@ -9,7 +9,7 @@ define(function () {
         }
 
         function onInit() {
-            // $ctrl.colorCode = $ctrl.color.hex;
+            $ctrl.contrast = Luma.relative($ctrl.color.hex) < 75;
         }
 
         function colorValue() {
