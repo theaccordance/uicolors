@@ -40,6 +40,14 @@ github {
     right: 0;
 }
 
+color-chip {
+    transition: transform 250ms ease-in-out;
+}
+
+color-chip:hover {
+    transform: scale(1.1);
+}
+
 color-chip div.color-tooltip {
     border: 2px solid #000;
     color: #000;
