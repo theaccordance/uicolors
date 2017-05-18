@@ -8,7 +8,7 @@ define(function () {
 
         function onColorSelect(event, data) {
             $ctrl.octocat = data;
-            $ctrl.corner = Luma.relative($ctrl.octocat) < 75 ? '#FFF' : '#000';
+            $ctrl.corner = Luma.relative($ctrl.octocat) < 100 ? '#FFF' : '#000';
         }
 
         function onInit() {
