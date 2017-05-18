@@ -9,7 +9,8 @@ define(function () {
         }
 
         function onInit() {
-            $ctrl.contrast = Luma.relative($ctrl.color.hex) < 75;
+            $ctrl.contrast = Luma.relative($ctrl.color.hex) < 100;
+            console.log($ctrl.color.name, Luma.relative($ctrl.color.hex));
         }
 
         function colorValue() {
