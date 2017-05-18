@@ -2,7 +2,7 @@ module.exports = function (grunt) {
     return {
         homepage: {
             files: {
-                "preview/indexgr.css" : "source/index.less"
+                "preview/index.css" : "source/index.less"
             }
         }
     };
