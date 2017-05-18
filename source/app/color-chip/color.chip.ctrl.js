@@ -10,15 +10,15 @@ define(function () {
 
         function onInit() {
             $ctrl.contrast = Luma.relative($ctrl.color.hex) < 100;
-            console.log($ctrl.color.name, Luma.relative($ctrl.color.hex));
+            $ctrl.label = ColorFormat.rgb($ctrl.color.hex);
         }
 
-        function colorValue() {
-            return ColorFormat.getColor($ctrl.color.hex)
+        function copyValue() {
+            return ColorFormat.getCopyValue($ctrl.color.hex)
         }
 
         $ctrl.$onInit = onInit;
         $ctrl.selectColor = selectColor;
-        $ctrl.colorValue =  colorValue;
+        $ctrl.copyValue =  copyValue;
     };
 });

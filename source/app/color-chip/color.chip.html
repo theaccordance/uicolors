@@ -1,9 +1,9 @@
-<div class="panel" ng-click="$ctrl.selectColor($ctrl.color.hex)" data-clipboard-text="{{$ctrl.colorValue()}}">
+<div class="panel" ng-click="$ctrl.selectColor($ctrl.color.hex)" data-clipboard-text="{{$ctrl.copyValue()}}">
     <div class="panel-heading" ng-style="{'background-color': $ctrl.color.hex}">
         <div class="color-tooltip pull-right" ng-class="{'inverse': $ctrl.contrast}" ><i class="glyphicon glyphicon-duplicate"></i><span>Copy</span></div>
     </div>
     <div class="panel-body">
         <h4 ng-bind="$ctrl.color.name"></h4>
-        <p ng-bind="$ctrl.colorValue()"></p>
+        <h5 ng-bind="$ctrl.color.hex"></h5>
     </div>
 </div>
