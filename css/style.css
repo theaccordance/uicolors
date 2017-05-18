@@ -40,11 +40,20 @@ github {
     right: 0;
 }
 
+color-chip {
+    cursor: pointer;
+    transition: transform 250ms ease-in-out;
+}
+
+color-chip:hover {
+    transform: scale(1.1);
+}
+
 color-chip div.color-tooltip {
-    border: 2px solid #000;
+    border: 2px solid rgba(0, 0, 0, 0.4);
     color: #000;
     border-radius: 6px;
-    font-weight: bold;
+    font-weight: 400;
     display: inline-block;
     padding: 4px 8px;
     opacity: 0;
@@ -56,6 +65,24 @@ color-chip:hover div.color-tooltip {
 }
 
 color-chip div.color-tooltip.inverse {
-    border-color: #FFF;
+    border-color: rgba(255, 255, 255, 0.4);
     color: #FFF;
+}
+
+color-chip div.color-tooltip > i {
+
+}
+
+color-chip div.color-tooltip > span {
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    width: 0;
+    overflow: hidden;
+    transition: all 250ms ease-in-out;
+}
+
+color-chip:hover div.color-tooltip > span {
+    width: 48px;
+    padding-left: 8px;
 }

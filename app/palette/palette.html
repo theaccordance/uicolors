@@ -1,6 +1,7 @@
 <h2 ng-bind="$ctrl.name"></h2>
 <div class="row" class="palette">
-    <div class="col-xs-6 col-sm-2" ng-repeat="color in $ctrl.palette.colors">
-        <color-chip color="color"></color-chip>
-    </div>
+    <color-chip ng-repeat="color in $ctrl.palette.colors" class="col-xs-6 col-sm-2" color="color"></color-chip>
+    <!--<div class="col-xs-6 col-sm-3" ng-repeat="color in $ctrl.palette.colors">-->
+        <!---->
+    <!--</div>-->
 </div>
