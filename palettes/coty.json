@@ -1,0 +1,24 @@
+{
+  "name": "Color Of The Year",
+  "slug": "coty",
+  "colors": [
+    {"name": "Greenery", "hex": "#88B04B"},
+    {"name": "Serenity", "hex": "#93A9D1"},
+    {"name": "Rose Quartz", "hex": "#F7CACA"},
+    {"name": "Marsala", "hex": "#964F4C"},
+    {"name": "Radiant Orchid", "hex": "#AD5E99"},
+    {"name": "Emerald", "hex": "#009473"},
+    {"name": "Tangerine Tango", "hex": "#DD4124"},
+    {"name": "Honeysuckle", "hex": "#D94F70"},
+    {"name": "Turquoise", "hex": "#45B5AA"},
+    {"name": "Mimosa", "hex": "#F0C05A"},
+    {"name": "Blue Iris", "hex": "#5A5B9F"},
+    {"name": "Chili Pepper", "hex": "#9B1B30"},
+    {"name": "Sand Dollar", "hex": "#DECDBE"},
+    {"name": "Blue Turquoise", "hex": "#53B0AE"},
+    {"name": "Tigerlily", "hex": "#E2583E"},
+    {"name": "Aqua Sky", "hex": "#7BC4C4"},
+    {"name": "True Red", "hex": "#BF1932"},
+    {"name": "Fuchsia Rose", "hex": "#C74375"}
+  ]
+}
