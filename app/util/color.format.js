@@ -15,6 +15,18 @@ define(function () {
            format = formats[0],
            processHex = {};
 
+       function getRGBValues (hex) {
+           var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex),
+               red = parseInt(result[1], 16),
+               green = parseInt(result[2], 16),
+               blue = parseInt(result[3], 16);
+           return {
+               red: red,
+               green: green,
+               blue: blue
+           };
+       }
+
        function toHexHash (hex) {
            return hex;
        }
@@ -24,19 +36,13 @@ define(function () {
        }
 
        function toRGB (hex) {
-           var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex),
-               r = parseInt(result[1], 16),
-               g = parseInt(result[2], 16),
-               b = parseInt(result[3], 16);
-           return ['rgb(',r, ',', g, ',', b,')'].join('');
+           var color = getRGBValues(hex);
+           return ['rgb(',color.red, ',', color.green, ',', color.blue,')'].join('');
        }
 
        function toRGBA (hex) {
-           var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex),
-               r = parseInt(result[1], 16),
-               g = parseInt(result[2], 16),
-               b = parseInt(result[3], 16);
-           return ['rgba(',r, ',', g, ',', b,', 1.0)'].join('');
+           var color = getRGBValues(hex);
+           return ['rgba(',color.red, ',', color.green, ',', color.blue,', 1.0)'].join('');
        }
 
        function toObjectiveC (hex) {
@@ -56,6 +62,8 @@ define(function () {
            return ['UIColor(red:',parseFloat(r).toFixed(2), ', green:', parseFloat(g).toFixed(2), ', blue:', parseFloat(b).toFixed(2),', alpha:1.0];'].join('');
        }
 
+
+
        processHex = {
            toHexHash: toHexHash,
            toHexNoHash: toHexNoHash,
@@ -65,7 +73,7 @@ define(function () {
            toSwift: toSwift
        };
 
-       function getColor (hex) {
+       function getCopyValue (hex) {
            return processHex[format.value](hex);
        }
 
@@ -83,7 +91,7 @@ define(function () {
        }
 
        return {
-           getColor: getColor,
+           getCopyValue: getCopyValue,
            getFormat: getFormat,
            getFormats: getFormats,
            setFormat: setFormat

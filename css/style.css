@@ -23,6 +23,9 @@ header {
 
 .panel-body {
     padding: 4px;
+    border: 1px solid #eee;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 
 .panel-body h4 {
@@ -85,4 +88,8 @@ color-chip div.color-tooltip > span {
 color-chip:hover div.color-tooltip > span {
     width: 48px;
     padding-left: 8px;
+}
+
+color-chip h5 {
+    text-transform: uppercase;
 }
