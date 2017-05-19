@@ -1,6 +1,6 @@
 {
   "name": "color-palettes",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "color pallete picker",
   "homepage": "http://joemainwaring.com/color-palettes/",
   "main": "index.js",
