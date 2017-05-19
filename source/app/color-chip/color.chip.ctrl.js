@@ -10,7 +10,6 @@ define(function () {
 
         function onInit() {
             $ctrl.contrast = Luma.relative($ctrl.color.hex) < 100;
-            $ctrl.label = ColorFormat.rgb($ctrl.color.hex);
         }
 
         function copyValue() {
