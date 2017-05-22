@@ -5,7 +5,7 @@ require.config({
     shim: {
         'angular' : {'exports' : 'angular'},
         'lib/angular-ui-router.min': {deps: ['angular']},
-        'lib/ngclipboard.min': {deps: ['angular']},
+        'lib/angular-animate.min': {deps: ['angular']},
         'lib/ng-notify.min': {deps: ['angular']}
     },
     baseUrl: '.',

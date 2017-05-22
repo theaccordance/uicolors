@@ -3,7 +3,8 @@ define(function () {
     return function ($interval) {
         "ngInject";
         var $ctrl = this,
-            count = 0;
+            count = 0,
+            interval = Math.floor(Math.random() * 1000) + 1000;
 
         function switchColor(count) {
             var color = $ctrl.palette.colors[count % $ctrl.length];
@@ -11,11 +12,12 @@ define(function () {
         }
 
         function onInit() {
+            console.log($ctrl.palette.name, interval);
             $ctrl.length = $ctrl.palette.colors.length;
             $ctrl.color = switchColor(count);
             $interval(function () {
                 $ctrl.color = switchColor(count++);
-            }, 2000);
+            }, interval);
         }
 
         $ctrl.$onInit = onInit;

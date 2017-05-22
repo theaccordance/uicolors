@@ -98,6 +98,55 @@ palette-chip {
     cursor: pointer;
 }
 
+palette-chip {
+    transition: all 250ms ease-in-out;
+}
+
+palette-chip:hover {
+    transform: scale(1.1);
+}
+
+
 palette-chip .panel-heading {
     transition: all 250ms ease-in-out;
+}
+
+div.color-menu {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    font-size: x-large;
+}
+
+section {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 50px;
+}
+
+section.ng-enter, section.ng-enter {
+    transition: all 500ms ease-in;
+    opacity: 0;
+    transform: scale(0);
+}
+
+section.ng-enter-active, section.ng-enter-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+section.ng-leave {
+    transition: all 500ms ease-in;
+}
+
+section.ng-leave-active {
+    opacity: 0;
+    transform: scale(2.5);
+}
+
+div.color-menu {
+    transition: 250ms all ease-in-out;
 }
