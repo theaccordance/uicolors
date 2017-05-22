@@ -5,6 +5,8 @@ define([
     './color-chip/color.chip.component',
     './github/github.component',
     './palette/palette.component',
+    './palette-chip/palette.chip.component',
+    './palettes/palettes.component',
     './toolbar/toolbar.component',
     './util/color.format',
     './util/luma',
@@ -19,6 +21,8 @@ define([
     colorChip,
     github,
     palette,
+    paletteChip,
+    palettesComponent,
     toolbar,
     colorFormat,
     luma,
@@ -32,6 +36,8 @@ define([
         .component('colorChip', colorChip)
         .component('github', github)
         .component('palette', palette)
+        .component('paletteChip', paletteChip)
+        .component('palettes', palettesComponent)
         .component('toolbar', toolbar)
         .factory('ColorFormat', colorFormat)
         .factory('Luma', luma)

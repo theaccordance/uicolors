@@ -15,7 +15,7 @@ define(function () {
         function list() {
             var list = [];
             for (var palette in PALETTES) {
-                list.push({name: PALETTES[palette].name, slug: PALETTES[palette].slug});
+                list.push(PALETTES[palette]);
             }
             return list;
         }

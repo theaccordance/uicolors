@@ -4,8 +4,19 @@ define(function () {
         "ngInject";
         $stateProvider
             .state({
+                name: 'palettes',
+                url: '/palettes',
+                component: 'palettes',
+                resolve: {
+                    palettes: function (Palettes) {
+                        "ngInject";
+                        return Palettes.list();
+                    }
+                }
+            })
+            .state({
                 name: 'palette',
-                url: '/:palette',
+                url: '/palettes/:palette',
                 component: 'palette',
                 resolve: {
                     palette: function (Palettes, $stateParams) {
@@ -14,6 +25,6 @@ define(function () {
                     }
                 }
             });
-        $urlRouterProvider.when('', '/flat-ui');
+        $urlRouterProvider.when('', 'palettes/flat-ui');
     };
 });

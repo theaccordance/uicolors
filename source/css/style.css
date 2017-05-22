@@ -93,3 +93,11 @@ color-chip:hover div.color-tooltip > span {
 color-chip h5 {
     text-transform: uppercase;
 }
+
+palette-chip {
+    cursor: pointer;
+}
+
+palette-chip .panel-heading {
+    transition: all 250ms ease-in-out;
+}

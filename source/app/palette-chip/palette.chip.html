@@ -1,0 +1,8 @@
+<div class="panel" ui-sref="palette({palette: $ctrl.palette.slug})">
+    <div class="panel-heading" ng-style="{'background-color': $ctrl.color}"></div>
+    <div class="panel-body">
+        <h4>Palette</h4>
+        <h5 ng-bind="$ctrl.palette.name"></h5>
+        <h6><i class="glyphicon glyphicon-tint"></i><span ng-bind="$ctrl.length"></span></h6>
+    </div>
+</div>

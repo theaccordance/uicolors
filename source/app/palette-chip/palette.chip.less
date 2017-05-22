@@ -1,0 +1,62 @@
+color-chip {
+  cursor: pointer;
+  transition: transform 250ms ease-in-out;
+
+  .panel {
+    border: 0;
+  }
+
+  .panel-heading {
+    height: 96px;
+  }
+
+  .panel-body {
+    padding: 4px;
+  }
+
+  h4 {
+    text-transform: capitalize;
+  }
+
+  h5 {
+    text-transform: uppercase;
+  }
+
+  .color-tooltip {
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    color: #000;
+    border-radius: 6px;
+    font-weight: 400;
+    display: inline-block;
+    padding: 4px 8px;
+    opacity: 0;
+    transition: opacity 200ms ease-in;
+
+    &.inverse {
+      border-color: rgba(255, 255, 255, 0.4);
+      color: #FFF;
+    }
+
+    span {
+      display: inline-block;
+      position: relative;
+      top: 3px;
+      width: 0;
+      overflow: hidden;
+      transition: all 250ms ease-in-out;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.1);
+
+    div.color-tooltip {
+      opacity: 1;
+
+      span {
+        width: 48px;
+        padding-left: 8px;
+      }
+    }
+  }
+}
