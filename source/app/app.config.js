@@ -25,6 +25,6 @@ define(function () {
                     }
                 }
             });
-        $urlRouterProvider.when('', 'palettes/flat-ui');
+        $urlRouterProvider.when('', 'palettes');
     };
 });
