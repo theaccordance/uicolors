@@ -13,6 +13,7 @@ define(['../../lib/clipboard.min'], function(Clipboard) {
             clipboard = new Clipboard('color-chip > .panel');
 
             clipboard.on('success', function (e) {
+                console.log(e);
                 ngNotify.set('Color copied to clipboard!');
                 e.clearSelection();
             });

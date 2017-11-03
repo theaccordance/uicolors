@@ -8,7 +8,6 @@ define(function () {
             $ctrl.format = ColorFormat.getFormat();
             $ctrl.formats = ColorFormat.getFormats();
             $ctrl.palettes = Palettes.list();
-            console.log($ctrl.palettes);
         }
 
         function active(palette) {
